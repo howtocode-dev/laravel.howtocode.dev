@@ -2,7 +2,7 @@
 
 [কোর্স এর মুল পাতা](http://laravel.howtocode.com.bd/) | [HowToCode মুল সাইট](http://www.howtocode.com.bd/) | [সবার জন্য প্রোগ্রামিং ব্লগ](http://blog.howtocode.com.bd/)
 
-# জাভা প্রোগ্রামিং
+# লারাভেল পিএইচপি ফ্রেমওয়ার্ক
 
 ### [আরাফাত রহমান](http://arafatbd.net)
 
