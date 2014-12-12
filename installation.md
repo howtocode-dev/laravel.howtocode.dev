@@ -4,7 +4,7 @@
 ## লারাভেল ইন্সটল ইন উন্ডোজ কম্পিউটার
 
 ### প্রয়োজনীয় টুলস সমূহ
-- ওয়েব সার্ভার([Apache](https://www.apachefriends.org/index.html), [Nginx](http://nginx.org/) ইত্যাদি)
+- ওয়েব সার্ভার(অবশ্য PHP, Mysql, Apache ইত্যাদি  একই সাথে ইন্সটল করার জন্য [xampp](https://www.apachefriends.org/index.html) বা [nginx](http://nginx.org/) বা [wamp](http://www.wampserver.com/en/) ব্যবহার করতে পারেন)
 - [কম্পোজার](https://getcomposer.org/) (পিএইচপি ডিপেন্ডেন্সি ম্যানেজার)
 
 **নোট :** আমি উন্ডোজ ব্যবহারকারী(বাধ্য হয়ে) তাই লিনাক্সের মতো টার্মিনালের স্বাদ নেওয়ার জন্য [গিট ব্যাস](https://windows.github.com/) ব্যবহার করি। আপনারাও ব্যবহার করতে পারেন। তাহলে অনেক মজা এবং সুবিধাও পাবেন।
