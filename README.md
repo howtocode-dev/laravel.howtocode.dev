@@ -4,7 +4,7 @@
 
 # লারাভেল পিএইচপি ফ্রেমওয়ার্ক
 
-### [আরাফাত রহমান](http://arafatbd.net)
+### [আরাফাত রহমান](http://arafatbd.net), [পরিমল চন্দ্র](https://www.facebook.com/porimol.chandro)
 
 #### ভূমিকা
 
