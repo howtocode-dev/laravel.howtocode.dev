@@ -1,1 +1,1 @@
-#সিম্পল ক্রুড(CRUD- Create, Edit, Update, Delete) এপ্লিকেশন
+#সিম্পল CRUD(CRUD- Create, Edit, Update, Delete) এপ্লিকেশন
