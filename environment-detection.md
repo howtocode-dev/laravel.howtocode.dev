@@ -29,7 +29,7 @@
 
 লারাভেল ডিফল্ট ইন্সটলেশন এ ```bootstrap/start.php``` ফাইল এ ইনভায়রনমেন্ট ডিটেকশন হয়। 
 
-```php Environment detection
+```php
 
 $env = $app->detectEnvironment(array(
 
@@ -45,7 +45,7 @@ $env = $app->detectEnvironment(array(
 
 ইনভায়রনমেন্ট যোগ করার সহজ উপায় হল ```hostname``` ব্যাবহার করা। লিনাক্স অথবা ম্যাক এ টার্মিনাল এ ```hostname``` কমান্ড ব্যাবহার করে হোস্টনেম বের করা যায়। আমরা নিচের মত করে আরও ইনভায়রনমেন্ট যোগ করতে পারি। 
 
-```php Environment detection
+```php
 
 $env = $app->detectEnvironment(array(
 
@@ -61,7 +61,7 @@ $env = $app->detectEnvironment(array(
 
 সো আরও সুন্দরভাবে ইনভায়রনমেন্ট যোগ করার জন্য আমরা ```$app->detectEnvironment()``` মেথড এ এরে এর পরিবর্তে পরিবর্তে ```closure``` ব্যাবহার করে আমাদের সুবিধামত ইনভায়রনমেন্ট ডিটেকশন কোড যোগ করতে পারি। 
 
-```php Environment detection
+```php
 
 $env = $app->detectEnvironment(function(){
 	
@@ -78,13 +78,14 @@ $env = $app->detectEnvironment(function(){
 
 এপাচি তে ইনভায়রনমেন্ট ভ্যারিয়েবল সেট করা খুব সহজ। ```vhost``` অথবা ```htaccess``` ফাইল এ নিচের মত করে ইনভায়রনমেন্ট ভ্যারিয়েবল সেট করতে পারি। 
 
-```
+```bash
 SetEnv LARAVEL_ENV dev
 ```
 
 অথবা আপনি যদি ```nginx``` ব্যাবহার করেন তাহলে আপনাকে ```php-fpm, or php-cgi``` এর মাধ্যমে ইনভায়রনমেন্ট ভ্যারিয়েবল সেট করতে হবে কারণ ```nginx```, ```apache``` এর মত নিজে ```php``` প্রসেস নিজে ম্যানেজ করেনা । 
 
-```
+
+```bash
 php-fpm
 
 ...
