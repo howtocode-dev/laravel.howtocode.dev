@@ -63,7 +63,7 @@ return view('welcome')->withName('Sohel Amin')->withEmail('sohelamin@example.com
 	var_dump($name);
 	var_dump($email);
 ?>
-```php
+```
 এছাড়াও আপনি আপনার ডাটা কিংবা অ্যারে সব ভিউ ফাইলের সাথে শেয়ার করতে পারবেন এইভাবে।
 ```php
 view()->share('data', [1, 2, 3]);
