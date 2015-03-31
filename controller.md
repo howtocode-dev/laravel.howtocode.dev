@@ -9,7 +9,7 @@
 ধরুন কন্ট্রোলারটিতে ২টি মেথড রাখব নিচে সেটা দেয়া হল।
  
 ```php
-namespace App\Http\Controllers; 
+<?php namespace App\Http\Controllers; 
 
 use App\Http\Controllers\Controller;
 
@@ -51,7 +51,7 @@ Route::get('user/{id}', 'UserController@showProfile');
 **AdminController** রাখব তাহলে কন্ট্রোলার ফাইলটি নিচের মত হবে।
 
 ```php
-namespace App\Http\Controllers\Photos;
+<?php namespace App\Http\Controllers\Photos;
 
 use App\Http\Controllers\Controller;
 
@@ -75,7 +75,7 @@ Route::get('photos/admin', 'Photos\AdminController@index');
 ধরুন আমরা ইউজার কন্ট্রোলার এর মেথডগুলা নিচের মত করে রাখব।
 
 ```php
-namespace App\Http\Controllers; 
+<?php namespace App\Http\Controllers; 
 
 use App\Http\Controllers\Controller;
 
@@ -194,7 +194,7 @@ Route::get('profile', [
 নিচে কন্ট্রোলার এর কোডটি কিছু উদাহরণ সহ দেয়া হল।
 
 ```php
-namespace App\Http\Controllers; 
+<?php namespace App\Http\Controllers; 
 
 use App\Http\Controllers\Controller;
 
