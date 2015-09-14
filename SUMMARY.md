@@ -19,6 +19,6 @@
    * [সেটিং আপ কনফাইড ফর অথেনটিকেশন](setting-up-confide.md)
    * [সেটিং আপ কিউ উইথ beanstalkd and supervisord](setting-up-queue.md)
 * [দ্বাদশ অধ্যায়ঃ প্যাকেজ ডেভেলপমেন্ট](package-development.md)
-* [দ্বাদশ অধ্যায়ঃ ইভেন্ট ব্রডকাস্টিং](event-broadcasting.md)
+* [তৃতীয়দশ অধ্যায়ঃ ইভেন্ট ব্রডকাস্টিং](event-broadcasting.md)
 * [চলবে ...](#)
 
