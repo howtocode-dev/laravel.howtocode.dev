@@ -18,7 +18,7 @@
    * [সেটিং আপ ম্যানড্রীল ফর ইমেইল ট্রান্সপোর্ট](setting-up-mandrill.md)
    * [সেটিং আপ কনফাইড ফর অথেনটিকেশন](setting-up-confide.md)
    * [সেটিং আপ কিউ উইথ beanstalkd and supervisord](setting-up-queue.md)
-* [একাদশ অধ্যায়ঃ প্যাকেজ ডেভেলপমেন্ট](package-development.md)
+* [দ্বাদশ অধ্যায়ঃ প্যাকেজ ডেভেলপমেন্ট](package-development.md)
 * [দ্বাদশ অধ্যায়ঃ ইভেন্ট ব্রডকাস্টিং](event-broadcasting.md)
 * [চলবে ...](#)
 
