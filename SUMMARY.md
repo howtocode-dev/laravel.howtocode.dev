@@ -9,7 +9,6 @@
 * [সপ্তম অধ্যায়: ড্যাটাবেস সীডিং মাইগ্রেশন](db-seeding-migration.md)
 * [অষ্টম অধ্যায়: মডেল](model.md)
 * [নবম অধ্যায়: বেসিক ফিল্টার](basic-filter.md)
-* [একাদশ অধ্যায়ঃ প্যাকেজ ডেভেলপমেন্ট](package-development.md)
 * [দশম অধ্যায়: এডভান্স রাউটিং](advance-routing.md)
 * একাদশ অধ্যায়: CRUD এপ্লিকেশন ডেভেলপমেন্ট
 * [বেটার লারাভেল ইনভায়রনমেন্ট সেটআপ](better-environment.md)
@@ -19,5 +18,6 @@
    * [সেটিং আপ ম্যানড্রীল ফর ইমেইল ট্রান্সপোর্ট](setting-up-mandrill.md)
    * [সেটিং আপ কনফাইড ফর অথেনটিকেশন](setting-up-confide.md)
    * [সেটিং আপ কিউ উইথ beanstalkd and supervisord](setting-up-queue.md)
+* [একাদশ অধ্যায়ঃ প্যাকেজ ডেভেলপমেন্ট](package-development.md)
 * [চলবে ...](#)
 
