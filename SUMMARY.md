@@ -20,4 +20,5 @@
    * [সেটিং আপ কিউ উইথ beanstalkd and supervisord](setting-up-queue.md)
 * [একাদশ অধ্যায়ঃ প্যাকেজ ডেভেলপমেন্ট](package-development.md)
 * [চলবে ...](#)
+* দ্বাদশ অধ্যায়ঃ ইভেন্ট ব্রডকাস্টিং
 
