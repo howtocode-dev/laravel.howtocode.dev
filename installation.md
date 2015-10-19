@@ -50,10 +50,15 @@ php artisan serve
 অন্যদিকে আমরা লারাভেল ইন্সটলার ব্যাবহার করেও খুব সহজেই লারাভেল ইন্সটল করে নিতে পারি নিচের মত করেঃ 
 
 ### ইন্সটলারটিকে গ্লোবালী ইন্সটল করার জন্যঃ 
-composer global require "laravel/installer=~1.1"
 
-এবার কম্পোজারের ~/.composer/vendor/bin ডিরেক্টরিকে PATH এ যুক্ত করতে হবে এর জন্য ইউনিক্স মেশিনের কমান্ড নিচে দেয়া হলঃ 
+```
+composer global require "laravel/installer=~1.1"
+```
+
+এবার কম্পোজারের **~/.composer/vendor/bin** ডিরেক্টরিকে **PATH** এ যুক্ত করতে হবে এর জন্য ইউনিক্স মেশিনের কমান্ড নিচে দেয়া হলঃ 
+```
 export PATH="~/.composer/vendor/bin:$PATH"
+```
 
 ### এবার ইন্সটলার দিয়ে লারাভেল প্রজেক্ট তৈরি করার জন্যঃ
 
@@ -65,17 +70,21 @@ laravel new howtocode
 
 ### Apache/htaccess এর জন্যঃ 
 
+```
 Options +FollowSymLinks
 RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [L]
+```
 
 ### nginx এর জন্যঃ 
 
+```
 location / {
     try_files $uri $uri/ /index.php?$query_string;
 }
+```
 
 পরবর্তী চ্যাপ্টারে **বেসিক রাউটিং** নিয়ে আলোচনা করা হবে। 
