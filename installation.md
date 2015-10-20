@@ -10,7 +10,7 @@
 
 আবার লিনাক্স কিংবা ইউনিক্স মেশিন হলে টার্মিনালে নিচের কমান্ডটি লিখতে হবেঃ  
 
-```
+```bash
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 ```
 
@@ -26,13 +26,14 @@ curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/loca
 
 টার্মিনাল কিংবা কমান্ড প্রমোট ওপেন করুন। এবার টার্মিনাল হতে আপনার ওয়ার্কিং ডিরেক্টরিতে নেভিগেট করুন। এরপর নিচের মত করে কমান্ড লিখুনঃ 
 
-```
+```bash
 composer create-project laravel/laravel your-project-name --prefer-dist
 ```
 
 এখানে **your-project-name** এর জায়গায় আপনার প্রজেক্টের নাম দিতে হবে।
 ধরুন আমাদের ক্ষেত্রে howtocode নাম দিলাম তাহলে আমাদেরকে প্রথম থেকে নিচের মত করে কমান্ড লিখতে হবেঃ 
-```
+
+```bash
 cd /var/www/html
 composer create-project laravel/laravel howtocode –prefer-dist
 cd howtocode
@@ -41,7 +42,7 @@ cd howtocode
 **বিঃদ্রঃ** **Composer** কমান্ডটি উইন্ডোস মেশিনে রান করার সমই **github** এর এক্সেস চাইতে পারে সেই ক্ষেত্রে আপনার এক্সেসটি ব্যাবহার করবেন। 
 
 এবার ইন্সটল করা হয়ে গেলে আমরা লারাভেলের আর্টিসান কমান্ড দিয়ে লারাভেল রান করতে পারি।
-```
+```bash
 php artisan serve
 ```
 আর **http://localhost:8000** লিংক দিয়ে প্রজেক্টি দেখতে পারব। 
@@ -51,18 +52,19 @@ php artisan serve
 
 ### ইন্সটলারটিকে গ্লোবালী ইন্সটল করার জন্যঃ 
 
-```
+```bash
 composer global require "laravel/installer=~1.1"
 ```
 
-এবার কম্পোজারের **~/.composer/vendor/bin** ডিরেক্টরিকে **PATH** এ যুক্ত করতে হবে এর জন্য ইউনিক্স মেশিনের কমান্ড নিচে দেয়া হলঃ 
-```
+এবার কম্পোজারের **~/.composer/vendor/bin** ডিরেক্টরিকে **PATH** এ যুক্ত করতে হবে এর জন্য ইউনিক্স মেশিনের কমান্ড নিচে দেয়া হলঃ
+
+```bash
 export PATH="~/.composer/vendor/bin:$PATH"
 ```
 
 ### এবার ইন্সটলার দিয়ে লারাভেল প্রজেক্ট তৈরি করার জন্যঃ
 
-```
+```bash
 laravel new howtocode
 ```
 
@@ -70,7 +72,7 @@ laravel new howtocode
 
 ### Apache/htaccess এর জন্যঃ 
 
-```
+```apacheconf
 Options +FollowSymLinks
 RewriteEngine On
 
@@ -81,10 +83,10 @@ RewriteRule ^ index.php [L]
 
 ### nginx এর জন্যঃ 
 
-```
+```apacheconf
 location / {
     try_files $uri $uri/ /index.php?$query_string;
 }
 ```
 
-পরবর্তী চ্যাপ্টারে **বেসিক রাউটিং** নিয়ে আলোচনা করা হবে। 
+পরবর্তী চ্যাপ্টারে **বেসিক রাউটিং** নিয়ে আলোচনা করা হবে।
