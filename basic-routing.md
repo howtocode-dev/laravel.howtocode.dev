@@ -67,7 +67,7 @@ class UserController extends BaseController {
 composer create-project laravel/laravel blog.app
 ```
 এই কমান্ড টি আমাদের ওয়ার্কিং ফোল্ডারে blog.app নামে একটি directory বানিয়ে তার ভিতরে লারাভেল এর যাবতীয় ফাইল ইন্টারনেট থেকে নামিয়ে নিবে। এবার যদি আপনি ফোল্ডারটি আপনার এডিটরে খুলনে তাহলে নিচের ছবিটার মত দেখবেন( লারাভেল 5.2.24 )  ।
-![Laravel 5.2 File structure](http://robertbiswas.com/howtocode-image/laravel/laravel-5-2-file-structure.jpg)
+![Laravel 5.2 File structure](images/laravel-5-2-file-structure.jpg)
 
 আশাকরি ব্রাউজারে আপনি সাইটটি দেখতে পারছেন ।
 
