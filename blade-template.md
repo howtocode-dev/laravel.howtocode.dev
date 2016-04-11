@@ -3,7 +3,7 @@
 লারাভেল এর সাথে ব্লেড টেমপ্লেট ইঞ্জিন বিল্ড ইন ভাবে এসেছে। আর এটা ব্যাবহার করা খুবই সহজ।
 ব্লেড টেমপ্লেটে কোড লেখার জন্য ভিউ ফাইলের এক্সটেনশন হতে হবে **.blade.php** ধরুন আপনার ভিউ ফাইলটির নাম **about** তাহলে ব্লেড এর ফরমেটে এটি হবে **about.blade.php** ।
 এখন ব্লেড এর নিয়ম অনুসারে ভিউ পেজ গুলো সাজানোর জন্য একটা মাস্টার পেজ বানাতে হবে যেটাকে এক্সটেন্ড করে অন্য ভিউ গুলো বানাতে হবে।
-তাহলে আমরা যদি **about** এর জন্য একটি ভিউ বানাই ব্লেড এর নিয়ম অনুযায়ী, প্রথমে **route** এ **about** ডিফাইন করতে হবে তারপর মাস্টার পেজ বানাইতে হবে তারপর **about** পেজটি বানাইতে হবে। 
+তাহলে আমরা যদি **about** এর জন্য একটি ভিউ বানাই ব্লেড এর নিয়ম অনুযায়ী, প্রথমে **route** এ **about** ডিফাইন করতে হবে তারপর মাস্টার পেজ বানাইতে হবে তারপর **about** পেজটি বানাইতে হবে।
 নিচে ধারাবাহিক ভাবে কোড গুলো দেখানো হল।
 
 **Route** এর জন্য।
@@ -135,11 +135,106 @@ Hello, {{ $name }}
 {{-- This comment will not be in the rendered HTML --}}
 ```
 
+### ব্লেড টেমপ্লেটিংঃ HTML ও Forms
 
-এখন আপনাদেরকে কখন ডাবল কারলি ব্রাকেট ব্যাবহার করতে হয় আর কখন ট্রিফল ব্রাকেট ব্যাবহার করতে হয় সেই সম্পর্কে বলব।
+লারাভেল এর ব্লেড টেমপ্লেট ব্যবহার করে HTML ও Forms তৈরি করতে আমাদের একটি "First party package" প্রয়োজন হবে। যেটা এখন "Laravel Collective" এর একটি component.
+আসুন জেনে নেই কি ভাবে আমরা এই শুবিধা আমাদের প্রোজেক্ট এ আনতে পারি।
 
+প্রোজেক্ট ডিরেক্টরি এর মুল পাথে ```composer.json``` নামে একটি ফাইল আছে যেটা আমাদের প্রোজেক্ট এর প্রয়োজনীয় প্যাকেজ গুলার তালিকা রাখে। ফাইলটির প্রথম কিছু অংশ অনেকটা এরকমঃ
 
-ডাবল কারলি ব্রাকেট ব্যাবহার করে সুধু ডাটা **echo** করা হয়। অপরদিকে ট্রিফল ব্রাকেট ব্যাবহার করলে **echo** করা ডাটা গুলো **HTML entities** এ রুপ ধারন করবে। তার মানে ডাটা আউটপুটের সময় **htmlentities()** ফাংশনটি কল হবে।
+```JS
+{
+    "name": "laravel/laravel",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=5.5.9",
+        "laravel/framework": "5.2.*"
+    },
+		.
+		.
+		.
+		.
+
+```
+ফাইলে "require" অংশে আমাদের প্রয়োজনীয় প্যাকেজটি যোগ করি, তাহলে এটা দেখতে হবে অনেকটাঃ
+
+```JS
+{
+    "name": "laravel/laravel",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=5.5.9",
+        "laravel/framework": "5.2.*",
+        "laravelcollective/html": "5.2.*"
+    },
+		.
+		.
+		.
+		.
+
+```
+এবার "Composer" ব্যবহার করে এটাকে আমাদের প্রোজেক্ট এ যোগ করি নিচের command টি Terminal এ লিখে
+
+```bash
+composer update
+```
+এটা আমাদের সব প্যাকেজ গুলোকে update, প্রয়োজনে add করে নিবে।
+
+এবার ```config/app.php``` ফাইলটি খুলি, যেটা সব "provider" ও এর 'alias' এরে এর মধ্যে রাখে এবং অ্যাপ run করার সময় autoloader এর মাধ্যমে এগুলোকে load করে।
+```php
+Collective\Html\HtmlServiceProvider::class,
+```
+লাইনটি provider এরে এর শেষে যোগ করি।
+
+```php
+'providers' => [
+	 // ... previous providers classes
+
+	 Collective\Html\HtmlServiceProvider::class,
+
+ ],
+```
+শেষ কাজ aliases এরে তে দুইটি class এর alias যোগ করা
+```php
+'aliases' => [
+	// ... previous aliases
+		'Form' => Collective\Html\FormFacade::class,
+		'Html' => Collective\Html\HtmlFacade::class,
+],
+```
+
+আমরা প্রস্তুত ব্লেড টেমপ্লেট ব্যবহার করে HTML ও Forms তৈরি করত!!!!
+
+উদাহরণ দেখার আগে একটি বিষয় জেনে নেই
+```php
+{{ $data }}
+```
+escaped value দেখাবে
+```php  
+{!! $data !!}
+```
+unescaped value দেখাবে
+
+একটু উদাহরণ দেই
+
+```php
+$data = '<strong> How to Code BD </strong>'
+{{ $data }}
+```
+দেখাবেঃ ```<strong> How to Code BD </strong>```
+
+```php
+$data = '<strong> How to Code BD </strong>'
+{!! $data !!}
+```
+দেখাবেঃ **How to Code BD**
+
 
 এইবার ফর্ম হেল্পার ব্যাবহার করে ফর্ম **echo** করার জন্য নিচের মত করে লিখতে হবে।
 
@@ -150,4 +245,3 @@ Hello, {{ $name }}
 ```
 
 আজকে এই পর্যন্ত, এর পরের চ্যাপ্টারে **কন্ট্রোলার** সম্পর্কে আলোচনা করা হবে।
-
