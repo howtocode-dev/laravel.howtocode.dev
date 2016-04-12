@@ -239,9 +239,19 @@ $data = '<strong> How to Code BD </strong>'
 এইবার ফর্ম হেল্পার ব্যাবহার করে ফর্ম **echo** করার জন্য নিচের মত করে লিখতে হবে।
 
 ```php
-{!! Form::open(['url' => 'action/url']) !!}
+{!! Form::open(['url' => '#']) !!}
 
 {!! Form::close() !!}
 ```
+এবং HTML আউটপুট হবে
+
+```html
+<form accept-charset="UTF-8" action="#" method="POST">
+	<input type="hidden" value="hbyt7fA7MW09iT8V54z2V5u8j0mFFJJckSs7XI9G" name="_token">
+
+</form>
+```
+এখানে 'POST' মেথড দিবে যদি অন্য কোন মেথড আমরা উল্লেখ না করি।
+
 
 আজকে এই পর্যন্ত, এর পরের চ্যাপ্টারে **কন্ট্রোলার** সম্পর্কে আলোচনা করা হবে।
