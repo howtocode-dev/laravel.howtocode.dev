@@ -410,4 +410,78 @@ Route::get('/form', function () {
 ```
 এখানে pages.forms লেখার কারণ pages ডাইরেক্টরি এর মধ্যে forms.blade.php ফাইলটি আছে। আর লারাভেল তো জানেই ভিউগুলা কোথায় থাকে।
 
+আসুন এবার Twitter Bootstrap এর সাথে আমাদের HTML Blade মিক্সাপ করি।
+
+আপনার forms.blade.php ফাইলটি আপডেট করুনঃ
+
+```html
+<div class="col-md-6 col-md-offset-3">
+            <h3>User Profile</h3>
+            <hr/>
+            {!! Form::open(array('url' => '#', 'class'=>'form-horizontal')) !!}
+            <div class="form-group">
+                {!! Form::label('user_name', 'Name:') !!}
+                {!! Form::text('user_name', '', array('class' =>'form-control', 'placeholder'=>'User Name')) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::label('email', 'Email:') !!}
+                {!! Form::email('email', $value = null, array('class' =>'form-control', 'placeholder'=>'Email Address')) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::label('gender', 'Gender:') !!}
+                {!! Form::radio('gender', 'Male', true) !!} Male
+                {!! Form::radio('gender', 'Female', false) !!} Female
+                {!! Form::radio('gender', 'Unisex', false) !!} Unisex
+            </div>
+            <div class="form-group">
+                {!! Form::label('role', 'Role:') !!}
+                {!! Form::select('role', array(
+                    'admin' => 'Administrator',
+                    'author' => 'Author',
+                    'subscriber' => 'Subscriber',
+                    'registered' => 'registered'
+                    ),null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::label('about', 'About Me') !!}<br>
+                {!! Form::textarea('about','',array('class'=>'form-control', 'rows' => '4')) !!}
+            </div>
+            {!! Form::submit('Update Profile', array('class' => 'btn btn-primary')) !!}
+            {!! Form::close() !!}
+        </div>
+```
+ব্রাউজার দেখাবেঃ
+<br>
+![mix-blade-bootstrape-form](images/mix-blade-bootstrape-form.png)
+
+HTML আউটপুট হবেঃ
+```html
+<form class="form-horizontal" accept-charset="UTF-8" action="#" method="POST"><input type="hidden" value="ZQ6nS9ifenMpro11inQ0azWGrnz5kRoi7lQ3UEdz" name="_token">
+	<div class="form-group">
+		<label for="user_name">Name:</label>
+		<input type="text" id="user_name" value="" name="user_name" placeholder="User Name" class="form-control">
+	</div>
+	<div class="form-group">
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email" placeholder="Email Address" class="form-control">
+	</div>
+	<div class="form-group">
+		<label for="gender">Gender:</label>
+		<input type="radio" id="gender" value="Male" name="gender" checked="checked"> Male
+		<input type="radio" id="gender" value="Female" name="gender"> Female
+		<input type="radio" id="gender" value="Unisex" name="gender"> Unisex
+	</div>
+	<div class="form-group">
+		<label for="role">Role:</label>
+		<select name="role" id="role" class="form-control"><option value="admin">Administrator</option><option value="author">Author</option><option value="subscriber">Subscriber</option><option value="registered">registered</option></select>
+	</div>
+	<div class="form-group">
+		<label for="about">About Me</label><br>
+		<textarea id="about" cols="50" name="about" rows="4" class="form-control"></textarea>
+	</div>
+	<input type="submit" value="Update Profile" class="btn btn-primary">
+</form>
+```
+কি লারাভেল Blade templating মজার না?
+
 আজকে এই পর্যন্ত, এর পরের চ্যাপ্টারে **কন্ট্রোলার** সম্পর্কে আলোচনা করা হবে।
