@@ -251,7 +251,77 @@ $data = '<strong> How to Code BD </strong>'
 
 </form>
 ```
-এখানে 'POST' মেথড দিবে যদি অন্য কোন মেথড আমরা উল্লেখ না করি।
+এখানে 'POST' মেথড দিবে যদি অন্য কোন মেথড আমরা উল্লেখ না করি। সাথে একটি ```html <input type="hidden" value="hbyt7fA7MW09iT8V54z2V5u8j0mFFJJckSs7XI9G" name="_token"> ``` যা আমাদের সিকুইরিটি বাড়াবে।
 
+এবার, নানা ধরনের ```input element``` গুলো আমাদের ফর্মে যোগ করিঃ
 
+```html
+<div id="simple-form">
+        <h3>User Profile</h3>
+        <hr/>
+        {!! Form::open(array('url' => '#')) !!}
+
+        {!! Form::label('user_name', 'Name:') !!}
+        {!! Form::text('user_name') !!}
+        <br>
+        {!! Form::label('email', 'Email:') !!}
+        {!! Form::email('email', $value = null) !!}
+        <br>
+        {!! Form::label('gender', 'Gender:') !!}
+        {!! Form::radio('gender', 'Male', true) !!} Male
+        {!! Form::radio('gender', 'Female', false) !!} Female
+        {!! Form::radio('gender', 'Unisex', false) !!} Unisex
+        <br>
+        {!! Form::label('role', 'Role:') !!}
+        {!! Form::select('role', array(
+            'admin' => 'Administrator',
+            'author' => 'Author',
+            'subscriber' => 'Subscriber',
+            'registered' => 'registered'
+
+            )) !!}
+        <br>
+        {!! Form::label('about', 'About Me') !!}<br>
+        {!! Form::textarea('about') !!}
+        <br><br>
+        {!! Form::submit('Update') !!}
+        {!! Form::close() !!}
+    </div>
+```
+ব্রাউজার দেখাবেঃ
+<br>
+![blade-simple-form-output](images/blade-simple-form-output.png)
+
+HTML আউটপুট হবেঃ
+```html
+<div id="simple-form">
+        <h3>User Profile</h3>
+        <hr>
+        <form accept-charset="UTF-8" action="#" method="POST"><input type="hidden" value="hbyt7fA7MW09iT8V54z2V5u8j0mFFJJckSs7XI9G" name="_token">
+	        <label for="user_name">Name:</label>
+	        <input type="text" id="user_name" name="user_name">
+	        <br>
+	        <label for="email">Email:</label>
+	        <input type="email" id="email" name="email">
+	        <br>
+	        <label for="gender">Gender:</label>
+	        <input type="radio" id="gender" value="Male" name="gender" checked="checked"> Male
+	        <input type="radio" id="gender" value="Female" name="gender"> Female
+	        <input type="radio" id="gender" value="Unisex" name="gender"> Unisex
+	        <br>
+	        <label for="role">Role:</label>
+	        <select name="role" id="role">
+               <option value="admin">Administrator</option>
+               <option value="author">Author</option>
+               <option value="subscriber">Subscriber</option>
+               <option value="registered">registered</option>
+  				</select>
+	        <br>
+	        <label for="about">About Me</label><br>
+	        <textarea id="about" rows="10" cols="50" name="about"></textarea>
+	        <br><br>
+	        <input type="submit" value="Update">
+        </form>
+    </div>
+```
 আজকে এই পর্যন্ত, এর পরের চ্যাপ্টারে **কন্ট্রোলার** সম্পর্কে আলোচনা করা হবে।
