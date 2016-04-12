@@ -330,5 +330,75 @@ HTML আউটপুট হবেঃ
 * Form এর জন্য নতুন Template বানাবো, রাউট সেট করবো
 * লারাভেল blade ও Twitter Bootstrap মিলিয়ে একটি Form তৈরি করবো
 
+## অনুশীলন
+গত অধ্যায় এ আমরা ভিউ এবং এই অধ্যায় এ blade template দেখলাম। আসুন একটি master.blade.php ফাইল বানাই ```resources/views``` এর ভিতর।
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>@yield('title')</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+	        @yield('content')
+	</div>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>
+</html>
+```
+``` @yield('title') ``` ও ``` @yield('content') ``` এর মানে title ও content নামে চাইল্ড টেমপ্লেটে কোনও section থাকলে এই অংশে দেখাবে। এটা আমারা একটি "Parent template" বানালাম।
+
+এবার একটি "Child Template" বানাই উপরের blade template ব্যবহার করে যে Form টি বানিয়েছি সেটা নিয়ে। ```resources/views``` এর ভিতর একটি ডাইরেক্টরি ও তার ভিতর ```form.blade.php``` নামে ফাইল তৈরি করি। এবং নিচের code গুলা লিখি।
+
+```html
+@extends('master')
+
+@section('title', 'Forms')
+
+@section('content')
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h3>User Profile</h3>
+            <hr/>
+            {!! Form::open(array('url' => '#')) !!}
+
+            {!! Form::label('user_name', 'Name:') !!}
+            {!! Form::text('user_name') !!}
+            <br>
+            {!! Form::label('email', 'Email:') !!}
+            {!! Form::email('email', $value = null) !!}
+            <br>
+            {!! Form::label('gender', 'Gender:') !!}
+            {!! Form::radio('gender', 'Male', true) !!} Male
+            {!! Form::radio('gender', 'Female', false) !!} Female
+            {!! Form::radio('gender', 'Unisex', false) !!} Unisex
+            <br>
+            {!! Form::label('role', 'Role:') !!}
+            {!! Form::select('role', array(
+                'admin' => 'Administrator',
+                'author' => 'Author',
+                'subscriber' => 'Subscriber',
+                'registered' => 'registered'
+
+                )) !!}
+            <br>
+            {!! Form::label('about', 'About Me') !!}<br>
+            {!! Form::textarea('about') !!}
+            <br><br>
+            {!! Form::submit('Update') !!}
+            {!! Form::close() !!}
+        </div>
+    </div>
+@endsection
+```
+
+
+
+
+
 
 আজকে এই পর্যন্ত, এর পরের চ্যাপ্টারে **কন্ট্রোলার** সম্পর্কে আলোচনা করা হবে।
