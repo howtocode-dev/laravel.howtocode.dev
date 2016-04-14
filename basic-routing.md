@@ -55,7 +55,7 @@ class UserController extends BaseController {
 
 **নোট :** এই দুই পদ্ধতি যথাযথভাবে কাজ করবে যদি আপনার Controller এবং  Method সমূহ RESTful হয়।  RESTful Controller সম্পর্কে এখান থেকে [বিস্তারিত](http://laravel.com/docs/5.0/controllers#restful-resource-controllers) পড়ুন
 
-## অনুশীলনঃ
+<h2 class='exercise-heading'>অনুশীলনঃ</h2>
 
 কোন কিছু শেখার সময় হাতে কলমে করতে পারলে শেখাটা ভাল হয় তাই আমরা চেষ্টা করবো কিছু অনুশীলন করতে।
 

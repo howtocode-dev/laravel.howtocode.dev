@@ -330,7 +330,7 @@ HTML আউটপুট হবেঃ
 * Form এর জন্য নতুন Template বানাবো, রাউট সেট করবো
 * লারাভেল blade ও Twitter Bootstrap মিলিয়ে একটি Form তৈরি করবো
 
-## অনুশীলন
+<h2 class='exercise-heading'>অনুশীলনঃ</h2>
 গত অধ্যায় এ আমরা ভিউ এবং এই অধ্যায় এ blade template দেখলাম। আসুন একটি master.blade.php ফাইল বানাই ```resources/views``` এর ভিতর।
 
 ```html
