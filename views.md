@@ -69,7 +69,7 @@ return view('welcome')->withName('Sohel Amin')->withEmail('sohelamin@example.com
 view()->share('data', [1, 2, 3]);
 ```
 
-## অনুশীলনঃ
+<h2 class='exercise-heading'>অনুশীলনঃ</h2>
 
 ভিউ সম্পর্কে তো কিছু ধারনা হলো, আসুন [পূর্ববর্তী অনুশীলন](http://laravel.howtocode.com.bd/basic-routing.html) এর সাথে আজ আমরা ভিউ যোগ করি।
 আমরা **resources/views** ফোল্ডারটি খুললে ```welcome.blade.php``` নামে একটি ভিউ দেখতে পাবো। মজার এই নামটির ৩টি অংশঃ প্রথমটি ভিউ এর নাম, দ্বিতীয় অংশঃ .blade যার মানে এই ফাইলে ব্লেড টেমপ্লেট থাকলে সেটা PHP এবং HTML এ রেন্ডার হবে(**ব্লেড টেমপ্লেটিং** সম্পর্কে আমরা পরবর্তী চ্যাপ্টারএ জানবো), তৃতীয় অংশঃ .php, হা হা আপনি এটার মানে জানেন।
