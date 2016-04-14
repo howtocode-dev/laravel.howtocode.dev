@@ -216,4 +216,65 @@ class UserController extends Controller {
 }
 ```
 <h2 class='exercise-heading'>অনুশীলনঃ</h2>
-আজকে এই পর্যন্তই। এর পরের চ্যাপ্টারে **ডাটাবেস সীডিং ও মাইগ্রেশন** নিয়ে আলোচনা করা হবে।
+
+আজ জানলাম controller এবং বুঝলাম routes.php থেকে সরাসরি view তে না গিয়ে controller ব্যবহার করা উচিৎ। আসুন আমাদের আগের অনুশীলন গুলি পরিবর্তন করে routes.php থেকে সরাসরি view তে না গিয়ে controller ব্যবহার করি।
+
+লারাভেল এর দারুণ এক ফিচার Artisan CLI. ভবিষ্যৎ অনুশীলনে আমরা এটার প্রচুর ব্যবহার দেখবো। আর কথা না বাড়িয়ে নিচের command টি run করাই।
+
+```bash
+php artisan make:controller PagesController
+```
+Controller created successfully. এই বার্তা আমাদের Terminal এ আসলেই বুজব লারাভেল আমাদের হয়ে একটি ফাইল তৈরি করেছে app/Http/Controllers পাথে, আমাদের দেওয়া নাম আনুসারে PagesController.php এবং আমাদের প্রয়োজনীয় কিছু code লিখেছে নিচের মতো।
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+use App\Http\Requests;
+
+class PagesController extends Controller
+{
+    //
+}
+```
+এবার এই class PagesController ভিতর আমাদের প্রয়োজন মতো কিছু method লিখে ফেলি।
+
+```php
+class PagesController extends Controller
+{
+    public function home(){
+        return view('home');
+    }
+
+    public function about(){
+        return view('about');
+    }
+
+    public function forms(){
+        return view('pages.forms');
+    }
+}
+```
+
+এবার routes.php কেও update করে ফেলিঃ
+
+```php
+Route::group(['middleware' => ['web']], function () {
+
+    Route::get('/', 'PagesController@home');
+
+    Route::get('/about', 'PagesController@about');
+
+    Route::get('/form', 'PagesController@forms');
+
+});
+```
+এবার ব্রাউজারে একটু চেক করে নিন।
+যদি ```NotFoundHttpException in RouteCollection.php .... ``` এই এররটি দেয় তাহলে দেখুন আপনার view গুলা আছে কিনা এবং আপনি সঠিক ভাবে address bar এ address টি লিখেছেন কিনা। আগের অনুশীলন গুলি করা থাকলে সমস্যা হবার কথা নয়।
+
+
+
+আজকে এই পর্যন্তই। এর পরের চ্যাপ্টারে **মাইগ্রেশন** নিয়ে আলোচনা করা হবে।
