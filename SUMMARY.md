@@ -6,7 +6,7 @@
 * [ভিউ](views.md)
 * [ব্লেড টেমপ্লেট](blade-template.md)
 * [কন্ট্রোলার](controller.md)
-* [মাইগ্রেশন](db-seeding-migration.md)
+* [মাইগ্রেশন](migration.md)
 * [মডেল](model.md)
 * [বেসিক ফিল্টার](basic-filter.md)
 * [এডভান্স রাউটিং](advance-routing.md)
