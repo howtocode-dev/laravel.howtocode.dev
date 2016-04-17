@@ -8,7 +8,7 @@
 * [কন্ট্রোলার](controller.md)
 * [মাইগ্রেশন](migration.md)
 * [মডেল](model.md)
-* [বেসিক ফিল্টার](basic-filter.md)
+* [মিডলওয়্যার](middleware.md)
 * [এডভান্স রাউটিং](advance-routing.md)
 * [CRUD অ্যাপ্লিকেশন ডেভেলপমেন্](#)
 * [বেটার লারাভেল ইনভায়রনমেন্ট সেটআপ](better-environment.md)
