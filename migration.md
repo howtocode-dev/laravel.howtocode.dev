@@ -15,7 +15,7 @@
 আসুন যার যার এনভায়রনমেন্ট আনুসারে mydb নামে একটি ডাটাবেজ বানাই।
 ধরে নেই,
 
-Database Host: localhost
+Database Host: 127.0.0.1
 Database Name: mydb
 User: root
 Password: secret
@@ -23,7 +23,7 @@ Password: secret
 এই বার আমাদের এপ ফোল্ডার এর রুটে ```.env``` নামে ফাইলটা খুলে নিম্ন লিখিত অংশের মতো পরিবর্তন আনি।
 
 ```php
-DB_HOST=localhost
+DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=mydb
 DB_USERNAME=root
@@ -48,7 +48,10 @@ DB_PASSWORD=secret
 
 মাইগ্রেশনের ফাইল গুলি থাকে ``` /database/migrations ``` ফোল্ডার এ। ফোল্ডারটি খুললে আমরা নিচের ফাইলটির মতো একটি(আসলে লারাভেল আমাদের জন্য দুটি ফাইল আগেই তৈরি করে রাখে) দেখতে পাবো।
 
-``` 2014_10_12_000000_create_users_table.php ```
+```
+2014_10_12_000000_create_users_table.php
+
+```
 
 সংখ্যা গুলো দিয়ে ফাইলটি কবে ও কখন তৈরি করা হয়েছে সেটা দেখায়, পরের অংশে মাইগ্রেশনটিতে কি করা হয়েছে সেটা থাকে। নামটি পরলেই আমরা বুজতে পারিঃ এটা দিয়ে users নামে একটি টেবিল তৈরি করা হয়েছে। এবং এটি একটি PHP ফাইল, হা হা হা ।
 
@@ -88,4 +91,68 @@ Migration নামের ক্লাস কে এক্সটেন্ড ক
 
 **up** মেথড এর ভেতর লারাভেল এর স্কিমা(Schema) ফ্যাসাদ(Facade) ব্যবহার করে টেবিলটি বানানো হয়েছে।
 
-**চলুন না আমরাও একটি টেবিল বানিয়ে ফেলিঃ**
+**চলুন না আমরাও একটি টেবিল এর স্কিমা(Schema) বানিয়ে ফেলিঃ**
+
+ভয় পেলেন নাকি যে আবার কত্ত গুলো কোড লেখা লাগবে? ভয় নেই লারাভেল আমাদের জন্য শক্তিশালী একটি CLI(Command Line Interface) দিয়েছে। আসুন ব্যবহার করি।
+Terminal এ আমাদের প্রজেক্ট এর ভেতর ঢুকে নিচের কমান্ড টি run করাইঃ
+```bash
+php artisan make:migration create_posts_table --create=posts
+```
+নিশ্চয় দেখবেন
+```bash
+Created Migration: 2016_04_18_201310_create_posts_table
+```
+তবে প্রথমের দিন ও সময় টি আপনার হবে।
+
+এবার আপনার Code Editor এ এই ```/database/migrations``` ডিরেক্টরি খুলুন ও নতুন তৈরি করা migration টি দেখুন(প্রয়োজনে একবার path টি refresh করে নিন)
+
+```php
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreatePostsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('posts', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('posts');
+    }
+}
+```
+আমরা আগেই সাধারণ একটি মাইগ্রেশনের ব্যাখ্যা পরেছি তাই সরাসরি up মেথড এ চলে আসি।
+
+up মেথড এর ভিতরের অংশটুকু কে যদি আমি বাংলা ভাষায় বলার চেষ্টা করি তাহলেঃ
+Schema ফ্যাসাদ, টেবিল তৈরি(create) করো যার নাম posts এবং টেবিলটির গঠনটি(Blueprint) এরকম যে এর ভিতর একটি id ফিল্ড থাকবে যেটা auto increment হবে এবং timestamps() এর মাধ্যমে আরও দুটি ফিল্ড বানাও created_at ও updated_at নামে যা দিন ও সময় সংরক্ষণ করবে।
+
+সাধারনত একটি টেবিলে একটি ID লাগে এবং ওই রেকর্ডটি কবে তৈরি ও পরিবর্তন হয়েছে সেইটাও জানতে হয়, তাই লারাভেল আগেই আমাদের জন্য লিখে দিয়েছে। কিন্তু এগুলো আমাদের প্রয়োজন না হোলে মুছে ফেলতে পারি। যাক, আমাদের কাল্পনিক posts টেবিলটায় আরও কিছু ফিল্ড/কলাম(Column) যোগ করিঃ
+
+```php
+Schema::create('posts', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('title', 255);
+            $table->text('content');
+            $table->string('slug')->nullable();
+            $table->tinyInteger('status')->default(1);
+            $table->timestamps();
+        });
+```
+বুজতেই পারছেন আমি title নামের string টাইপের ২৫৫ অক্ষরের মধ্যে সীমাবদ্ধ একটি column যোগ করেছি। এছাড়া content, slug ও status নামের আরও তিনটি column যোগ করেছি। আশা করি এগুলার টাইপটি বুজতে পেরেছেন। আমিে এই কলামগুলা তৈরি করার জন্য যে মেথড গুলো ব্যবহার করেছি সেগুলাকে বলে কলাম মেথড(Column methods)।
