@@ -1,6 +1,20 @@
-.exercise-heading{
-  color: rgb(221, 109, 96);
+@font-face {
+    font-family: 'kalpurushregular';
+    src: url('fonts/kalpurush-webfont.eot');
+    src: url('fonts/kalpurush-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/kalpurush-webfont.woff2') format('woff2'),
+         url('fonts/kalpurush-webfont.woff') format('woff'),
+         url('fonts/kalpurush-webfont.ttf') format('truetype'),
+         url('fonts/kalpurush-webfont.svg#kalpurushregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
 }
-h1, h2, h3, h4{
+
+p{
+  font-family: kalpurushregular;
+}
+h1, h2, h3, h4, h5, h6{
   color: rgb(221, 109, 96);
+  font-family: kalpurushregular;
 }
