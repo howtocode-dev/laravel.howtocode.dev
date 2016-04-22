@@ -58,7 +58,7 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('title', 255);
             $table->text('content');
-            $table->tinyInteger('status')->default(1);
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
     }
@@ -125,3 +125,17 @@ class Post extends Model
     public $timestamps = false;
 }
 ```
+##### Mass-Assignment Vulnerability
+জিনিসটা কি জানার আগে আমরা একটা পরিস্থিতি কল্পনা করি।
+মনে করি, আমাদের একটি form আছে যেখান থেকে লেখকরা পোস্ট তৈরি করে সাবমিট করবে, এবং একটি মেথড এর সাহায্যে এক লাইনেই আমরা ডাটাবেজে সেভ করে নিব। পরে অ্যাডমিন পোস্টটি চেক করে, status 1 করে দিলেই পোস্টটি সাইট এ দেখাবে। কিন্তু কোনও চালাক ডেভেলপার  পোস্ট তৈরি করে সাবমিট করার সময় ইন্সপেক্ট এলিমেন্ট করে পোস্ট রিকুয়েস্ট এর সাথে status=1 পাঠিয়ে দিলো আর সাথে সাথেই পোস্টটি লাইভ হয়ে যাবে - তাতে যাচ্ছে তাই জাইই থাকুক না কেন। কি এটা একটা দুর্বলতা নয়?
+আর এই দুর্বলতাকেই বলে ম্যাস অ্যাসাইনমেন্ট ভলনারাবিলিটি।
+এই দুর্বলতা কাটাতে লারাভেল মডেলের জন্য দুটি প্রপার্টি দিয়েছেঃ fillable ও guarded ।
+এদের যে কোনও একটিকে আমাদের মডেলে ব্যবহার করলেই এই দুর্বলতা কাটাতে পারবো, নিচের কোড টি দেখুন, আমাদের posts টেবিলের জন্য লেখা।
+```php
+class Post extends Model
+{
+    protected $guarded = ['status'];
+    protected $fillable = ['title', 'content'];
+}
+```
+ 
