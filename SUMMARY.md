@@ -9,7 +9,7 @@
 * [মাইগ্রেশন](migration.md)
 * [মডেল](model.md)
 * [মধ্যবর্তী প্রোজেক্ট - ১](project-1.md)
-  * [পরিবেশ তৈরি](project-1-LAMP.md)
+  * [পরিবেশ তৈরি](project-1-environment.md)
   * [লারাভেল ইন্সটল ও প্রোজেক্ট শুরু](project-1-install.md)
 * [মিডলওয়্যার](middleware.md)
 * [মধ্যবর্তী প্রোজেক্ট - ২](project-2.md)
