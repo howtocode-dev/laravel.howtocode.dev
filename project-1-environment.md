@@ -11,6 +11,7 @@
 
 [নাহিদ বিন আজহারের এর হোমস্টিড বিষয়ে বাংলা আর্টিকেল ](http://nahid.co/diary/read/28)
 
+[হাসিন হায়দার এর ভ্যাগর‍্যান্ট পরিচিতি - Youtube চ্যানেল](https://www.youtube.com/watch?v=LvOXmidHgU0&list=PLoR56CteKZnBC7Bxk7AU4127Iw5IvgCHc)
 ##LAMP Stack, MAMP, XAMP, WAMP
 আপনি লিনাক্স বা ম্যাক এ সরাসরি LAMP Stack ইন্সটল করে নিতে পারেন অথবা আপনার OS অনুসারে MAMP, XAMP, WAMP বা অন্য কোনও কিছু ব্যবহার করতে পারেন যতক্ষণ পর্যন্ত নিচের প্রয়োজনীয় লিস্ট এর সব থাকে।
 
@@ -22,5 +23,7 @@
 <li>Tokenizer PHP Extension</li>
 </ul>
 
+**লিঙ্কঃ**
+[বাংলায় পিএইচপি কোর্সের ইনস্টলেশন অধ্যায়](http://php.howtocode.com.bd/installation.html)
 ##ভারচুয়াল হোস্ট
 আমাদের প্রোজেক্ট আনুশিলন করার সময় অবশ্যই একটি ভারচুয়াল হোস্ট তৈরি করে নিন, যেমন project.one যার ডকুমেন্ট রুট এর শেষ অংশ ```project.one/public```। আশা করি সমস্যা হবে না যদি হয় **তবে নিচের Comment এ জানান**, আমরা এই অংশটি সংযোজিত করব।
