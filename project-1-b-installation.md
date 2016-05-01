@@ -111,7 +111,7 @@ php artisan migrate
 
 এই অধ্যায়ের সোর্স কোড পেতে
 ```bash
-git checkout a522ab7
+git checkout a522ab7ba
 ```
 
 সর্বশেষ কমিট পর্যন্ত পেতে আবার নিচের কমান্ডটি দিন

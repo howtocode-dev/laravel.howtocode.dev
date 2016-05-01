@@ -11,6 +11,7 @@
 * [মধ্যবর্তী প্রোজেক্ট - ১](project-1.md)
   * [পরিবেশ তৈরি](project-1-environment.md)
   * [লারাভেল ইন্সটল ও প্রোজেক্ট শুরু](project-1-b-installation.md)
+  * [সিড ও ইনডেক্স পেইজ](project-1-c-seed-index.md)
 * [মিডলওয়্যার](middleware.md)
 * [মধ্যবর্তী প্রোজেক্ট - ২](project-2.md)
 * [এডভান্স রাউটিং](advance-routing.md)
