@@ -24,3 +24,11 @@ h2 {
   padding: 0 10px;
   text-align: center;
 }
+.caution-div {
+  border: 1px dashed rgb(221, 109, 96);
+  padding: 10px;
+}
+.caution{
+  color: red;
+  font-weight: bold;
+}
