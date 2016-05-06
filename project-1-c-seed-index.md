@@ -39,7 +39,7 @@ class Post extends Model
 অংশটি বোঝার জন্য [এইখানে দেখুন](http://laravel.howtocode.com.bd/model.html#massassignment-vulnerability) ।
 
 ### posts টেবিল এ কিছু রেকর্ড ইন্সার্ট করি ডেভেলপমেন্ট এর সুবিধার জন্য
-আমরা আগেই [Tinker](http://laravel.howtocode.com.bd/model.html#tinker-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%95%E0%A6%BF%E0%A6%9B%E0%A7%81-%E0%A6%AE%E0%A6%9C%E0%A6%BE) ব্যবহার করে কিভাবে টেবিলে ডাটা ইন্সার্ট করা যায় দেখেছিলাম। আজ দেখবো Seeding ।
+আমরা আগেই [Tinker](http://laravel.howtocode.com.bd/model.html#tinker-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%95%E0%A6%BF%E0%A6%9B%E0%A7%81-%E0%A6%AE%E0%A6%9C%E0%A6%BE) ব্যবহার করে কিভাবে টেবিলে ডাটা ইন্সার্ট করা যায় তা দেখেছিলাম। আজ দেখবো Seeding ।
 
 ## সিডিং(Seeding)
 লারাভেল ডাটাবেজে টেস্ট ডাটা ইন্সার্ট করার জন্য সাধারণ একটি method যোগ করেছে, যার নাম সিডিং(Seeding)। সব সিড ক্লাস ```database/seeds ``` ডাইরেক্টরিতে থাকে। সিড ক্লাস এর নাম আপনি যেকোনো কিছুই দিতে পারেন, কিন্তু কিছু রীতি মেনে নাম দেয়াই ভালো, যেমন আমাদের posts টেবিলের সিডার ক্লাস এর নাম হতে পারে ``` PostsTableSeeder ```।
