@@ -41,4 +41,16 @@ Route::get('/user/{id?}','SomeController@show');
 ```
 
 ##রেগুলার এক্সপ্রেশন
+আপনি চাইলে রেগুলার এক্সপ্রেশন দিয়ে রাউট লিখতে পারেন। Route ক্লাসের where মেথড ব্যবহার করে প্যারামিটার এর সাথে রেগুলার এক্সপ্রেশন যুক্ত করে দিতে পারেন।
 
+```php
+Route::get('user/{name}', function ($name) {
+    return $name;
+})
+->where('name', '[A-Za-z]+');
+
+Route::get('user/{name}/post/{id}', function ($name,$id) {
+    return $name."'s post ".$id;
+})
+->where(['name'=> '[A-Za-z]+','id'=>'[0-9]+']);
+```
