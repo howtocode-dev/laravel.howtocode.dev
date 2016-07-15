@@ -39,3 +39,6 @@ public function show($id=1)
 // route
 Route::get('/user/{id?}','SomeController@show');
 ```
+
+##রেগুলার এক্সপ্রেশন
+
