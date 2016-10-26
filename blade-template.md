@@ -135,6 +135,20 @@ Hello, {{ $name }}
 {{-- This comment will not be in the rendered HTML --}}
 ```
 
+
+### ব্লেড টেমপ্লেটিংঃ ফোল্ডার কি সুনি্দিষ্ট?
+
+সাধারনত সকল ব্লেড টেমপ্লেট ```resources->views``` ফোল্ডারে থাকে। এর কারন হল আমরা যদি ```config->view.php``` তে যাই তাহলে দেখব, 
+
+```php
+'paths' => [
+      realpath(base_path('resources/views')),
+],
+```
+
+এইখানে আমরা paths টি সুনির্দিষ্ট করে দিয়েছি ```resources->views``` ফোল্ডারে। আপনি চাইলে এইটি পরিবর্তন করতে পারেন।
+
+
 ### ব্লেড টেমপ্লেটিংঃ HTML ও Forms
 
 লারাভেল এর ব্লেড টেমপ্লেট ব্যবহার করে HTML ও Forms তৈরি করতে আমাদের একটি "First party package" প্রয়োজন হবে। যেটা এখন "Laravel Collective" এর একটি component.
