@@ -1,11 +1,11 @@
 #লারাভেল প্যাকেজ ডেভেলপমেন্ট
 
 ##প্যাকেজঃ
-পিএইসপি কিংবা কোন প্রোগ্রামিং ল্যাংগুয়েজে ব্যাবহৃত প্যাকেজ বলতে উক্ত ল্যাংগুয়েজে তৈরি লাইব্রেরীকে বোঝান হয়ে থাকে সেটা বিভিন্ন প্রজেক্টে বারবার ব্যাবহার উপযোগী।
-পিএইসপিতে ব্যাবহারের ক্ষেত্র অনুযায়ী প্যাকেজ সাধারণত দুই ধরনের হয়ে থাকে একটি হল স্ট্যান্ডঅ্যালন আরেকটি হল কোন নির্দিষ্ট ফ্রেমওয়ার্ক কিংবা স্ট্যাক ভিত্তিক।
+পিএইচপি কিংবা কোন প্রোগ্রামিং ল্যাংগুয়েজে ব্যাবহৃত প্যাকেজ বলতে উক্ত ল্যাংগুয়েজে তৈরি লাইব্রেরীকে বোঝান হয়ে থাকে সেটা বিভিন্ন প্রজেক্টে বারবার ব্যাবহার উপযোগী।
+পিএইচপিতে ব্যাবহারের ক্ষেত্র অনুযায়ী প্যাকেজ সাধারণত দুই ধরনের হয়ে থাকে একটি হল স্ট্যান্ডঅ্যালন আরেকটি হল কোন নির্দিষ্ট ফ্রেমওয়ার্ক কিংবা স্ট্যাক ভিত্তিক।
 
 ##লারাভেল প্যাকেজঃ
-লারাভেলের প্যাকেজ পিএইসপির স্ট্যান্ডঅ্যালন প্যাকেজ এর মতই শুধু পার্থক্য হল এটি লারাভেলের ব্যাবহার উপযোগী আর লারাভেল কেন্দ্রিক করেই তৈরি করা হয়।
+লারাভেলের প্যাকেজ পিএইচপির স্ট্যান্ডঅ্যালন প্যাকেজ এর মতই শুধু পার্থক্য হল এটি লারাভেলের ব্যাবহার উপযোগী আর লারাভেল কেন্দ্রিক করেই তৈরি করা হয়।
 
 একটি লারাভেল প্যাকেজ এর মধ্যে নিচের রিসোর্স গুলো থাকতে পারেঃ
 
@@ -20,35 +20,35 @@
 
 **বিঃদ্রঃ** একটি লারাভেল প্যাকেজের মধ্যে **Service Provider** থাকতেই হবে।
 
-লারাভেলের প্যাকেজ তৈরি এর আগে পিএইসপিতে কিভাবে প্যাকেজ তৈরি করতে হয় সেই সম্পর্কে ধারণা থাকলে ভাল হয়। আর এই জন্য এই বয়লারপ্লেটটি দেখে নিতে পারেন।
+লারাভেলের প্যাকেজ তৈরি এর আগে পিএইচপিতে কিভাবে প্যাকেজ তৈরি করতে হয় সেই সম্পর্কে ধারণা থাকলে ভাল হয়। আর এই জন্য এই বয়লারপ্লেটটি দেখে নিতে পারেন।
 
 আমরা লারাভেলের প্যাকেজ **“illuminate/workbench”** এই প্যাকেজটি ব্যাবহার করেও প্যাকেজ জেনারেট করতে পারি কিন্তু সমস্যা হল এটি লারাভেল ভার্সন ৪.২ এর পর থেকে বাদ দেয়া হয়েছে। তাছাড়াও এটিতে আর সাপোর্ট দেয়া হয়না, আর ক্লাস অ্যাটোলোডিং এর জন্য PSR-0 ব্যাবহার করা হয়েছে যেটি ডেপ্রিকেটেড হয়েছে কিছুদিনের মধ্যে রিমুভ করা হবে। কাজেই আমরা আমাদের প্যাকেজ তৈরি করতে **“illuminate/workbench”** প্যাকেজটি ব্যাবহার করবনা আর **PSR-4** স্ট্যান্ডার্ড অনুসরণ করব।
 
 ##প্যাকেজ তৈরিকরণ প্রক্রিয়াঃ
-লারাভেল কিংবা পিএইসপির প্রজেক্টে কম্পোজার প্যাকেজের জন্য **vendor** নামে একটি বাই ডিফল্ড ডিরেক্টরি থাকে। আপনার ভেন্ডর ও প্যাকেজ ডিরেক্টরি তৈরি করার জন্য উক্ত **vendor** ডিরেক্টরিতে ঢুকতে হবে। এবার ধরুন আপনার ভেন্ডর ডিরেক্টরির নাম দিলাম **my-vendor** আর এর ভিতরে প্যাকেজ ডিরেক্টরির জন্য **my-package** নাম দিলাম। মনে রাখবেন ডিরেক্টরি এর নাম সব সময় যেন ছোট হাতের লেখা হয়।
+লারাভেল কিংবা পিএইচপির প্রজেক্টে কম্পোজার প্যাকেজের জন্য **vendor** নামে একটি বাই ডিফল্ড ডিরেক্টরি থাকে। আপনার ভেন্ডর ও প্যাকেজ ডিরেক্টরি তৈরি করার জন্য উক্ত **vendor** ডিরেক্টরিতে ঢুকতে হবে। এবার ধরুন আপনার ভেন্ডর ডিরেক্টরির নাম দিলাম **my-vendor** আর এর ভিতরে প্যাকেজ ডিরেক্টরির জন্য **my-package** নাম দিলাম। মনে রাখবেন ডিরেক্টরি এর নাম সব সময় যেন ছোট হাতের লেখা হয়।
 এবার প্যাকেজের ইনফরমেশন এবং কনফিগারেশনের জন্য নিচের মত করে **composer.json** ফাইল তৈরি করতে হবে।
 
 ```JSON
-{ 
-    "name": "my-vendor/my-package", 
-    "license": "MIT", 
-    "description": "Description about your package", 
-    "keywords": [],    
-    "authors": [ 
-        { 
-            "name": "Your Name", 
+{
+    "name": "my-vendor/my-package",
+    "license": "MIT",
+    "description": "Description about your package",
+    "keywords": [],
+    "authors": [
+        {
+            "name": "Your Name",
             "email": "email@example.com"
-        } 
-    ], 
-    "require": { 
-        "php": ">=5.5.9", 
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
         "illuminate/support": "5.1.*"
-    }, 
-    "autoload": { 
-        "psr-4": { 
+    },
+    "autoload": {
+        "psr-4": {
             "MyVendor\\MyPackage\\": "src/"
-        } 
-    }  
+        }
+    }
 }
 ```
 
@@ -60,75 +60,75 @@
 এবার একটি সার্ভিস প্রোভাইডার তৈরি করা শিখব। নিচে **"MyPackageServiceProvider.php"** নামে একটি স্যাম্পল প্রোভাইডার দেখানো হলঃ
 
 ```php
-<?php 
-  
-namespace MyVendor\MyPackage; 
- 
-use Illuminate\Support\ServiceProvider; 
- 
-class MyPackageServiceProvider extends ServiceProvider 
-{ 
- 
-    /** 
-     * Indicates if loading of the provider is deferred. 
-     * 
-     * @var bool 
+<?php
+
+namespace MyVendor\MyPackage;
+
+use Illuminate\Support\ServiceProvider;
+
+class MyPackageServiceProvider extends ServiceProvider
+{
+
+    /**
+     * Indicates if loading of the provider is deferred.
+     *
+     * @var bool
      */
-    protected $defer = false; 
- 
-    /** 
-     * Perform post-registration booting of services. 
-     * 
-     * @return void 
+    protected $defer = false;
+
+    /**
+     * Perform post-registration booting of services.
+     *
+     * @return void
      */
-    public function boot() 
-    { 
- 
-        // Loading routes 
-        if (!$this->app->routesAreCached()) { 
-            require __DIR__ . '/routes.php'; 
-        } 
-  
-        // Publishing configs 
-        $this->publishes([ 
-            __DIR__ . '/config/my-package.php' => config_path('my-package.php'), 
-        ]); 
- 
-        // Publishing views 
-        $this->publishes([ 
-            __DIR__ . '/views' => base_path('resources/views'), 
-        ]); 
- 
-        // Loading translations 
-        $this->loadTranslationsFrom(__DIR__ . '/translations', 'my-package'); 
- 
-        // Publishing public assets 
-        $this->publishes([ 
-            __DIR__ . '/assets' => public_path('my-vendor/my-package'), 
-        ], 'public'); 
- 
-        // Publishing migrations 
-        $this->publishes([ 
-            __DIR__ . '/migrations' => database_path('/migrations'), 
-        ], 'migrations'); 
- 
-        // Publishing seeds 
-        $this->publishes([ 
-            __DIR__ . '/seeds' => database_path('/seeds'), 
-        ], 'migrations'); 
- 
-    } 
- 
-    /** 
-     * Register bindings in the container. 
-     * 
-     * @return void 
+    public function boot()
+    {
+
+        // Loading routes
+        if (!$this->app->routesAreCached()) {
+            require __DIR__ . '/routes.php';
+        }
+
+        // Publishing configs
+        $this->publishes([
+            __DIR__ . '/config/my-package.php' => config_path('my-package.php'),
+        ]);
+
+        // Publishing views
+        $this->publishes([
+            __DIR__ . '/views' => base_path('resources/views'),
+        ]);
+
+        // Loading translations
+        $this->loadTranslationsFrom(__DIR__ . '/translations', 'my-package');
+
+        // Publishing public assets
+        $this->publishes([
+            __DIR__ . '/assets' => public_path('my-vendor/my-package'),
+        ], 'public');
+
+        // Publishing migrations
+        $this->publishes([
+            __DIR__ . '/migrations' => database_path('/migrations'),
+        ], 'migrations');
+
+        // Publishing seeds
+        $this->publishes([
+            __DIR__ . '/seeds' => database_path('/seeds'),
+        ], 'migrations');
+
+    }
+
+    /**
+     * Register bindings in the container.
+     *
+     * @return void
      */
-    public function register() 
-    { 
-        $this->app->bind('MyPackageClass', 'MyVendor\MyPackage\MyPackageClass'); 
-    } 
- 
+    public function register()
+    {
+        $this->app->bind('MyPackageClass', 'MyVendor\MyPackage\MyPackageClass');
+    }
+
 }
 ```
 
@@ -151,16 +151,16 @@ $this->app->bind('MyPackageClass', 'MyVendor\MyPackage\MyPackageClass');
 **MyPackageClass** এর জন্য নিচের কোড লিখেছি।
 
 ```php
-<?php 
- 
-namespace MyVendor\MyPackage; 
- 
-class MyPackageClass 
-{ 
-    public static function sayHi() 
-    { 
-        return 'Hello World!'; 
-    } 
+<?php
+
+namespace MyVendor\MyPackage;
+
+class MyPackageClass
+{
+    public static function sayHi()
+    {
+        return 'Hello World!';
+    }
 }
 ```
 
@@ -169,8 +169,8 @@ class MyPackageClass
 আপনার লারাভেল প্রজেক্টের মেইন composer.json ফাইলে নিচের কোড যোগ করতে হবেঃ
 
 ```JSON
-"psr-4": { 
-    "App\\": "app/", 
+"psr-4": {
+    "App\\": "app/",
     "MyVendor\\MyPackage\\": "vendor/my-vendor/my-package/src"
 }
 ```
@@ -179,17 +179,17 @@ class MyPackageClass
 এবার সার্ভিস প্রোভাইডারটি "config/app.php" ফাইলে নিচের মত করে যোগ করতে হবে।
 
 ```php
-'providers' => [ 
-    ... 
- 
-    MyVendor\MyPackage\MyPackageServiceProvider::class, 
+'providers' => [
+    ...
+
+    MyVendor\MyPackage\MyPackageServiceProvider::class,
 ],
 ```
 
 এবার নিচের কমান্ড রান করেনঃ
 
 ```
-composer dump-autoload 
+composer dump-autoload
 composer update
 ```
 
@@ -202,7 +202,7 @@ php artisan vendor:publish
 এবার প্যাকেজের **MyPackageClass** টি অ্যাপ্লিকেশনের মধ্যে ব্যাবহারের জন্য নিচের মত করে লিখতে হবে।
 
 ```php
-$myPackage = $this->app['MyPackageClass']; 
+$myPackage = $this->app['MyPackageClass'];
 echo $myPackage::sayHi();
 ```
 
@@ -213,8 +213,8 @@ echo \MyVendor\MyPackage\MyPackageClass::sayHi();
 ```
 
 লারাভেলের প্যাকেজ ডেভেলপমেন্ট সম্পর্কে বিস্তারিত জানতে [এই লিঙ্ক](http://laravel.com/docs/5.1/packages) অনুসরণ করবেন।
-লারাভেলের সার্ভিস প্রভাইডার সম্পর্কে বিস্তারিত জানতে [এই লিঙ্ক](http://laravel.com/docs/5.1/providers) অনুসরণ করবেন।
-সার্ভিস প্রভাইডার সম্পর্কে বিস্তারিত জানতে [এই লিঙ্ক](http://laravel.com/docs/5.1/container) অনুসরণ করবেন।
+লারাভেলের সার্ভিস প্রোভাইডার সম্পর্কে বিস্তারিত জানতে [এই লিঙ্ক](http://laravel.com/docs/5.1/providers) অনুসরণ করবেন।
+সার্ভিস প্রোভাইডার সম্পর্কে বিস্তারিত জানতে [এই লিঙ্ক](http://laravel.com/docs/5.1/container) অনুসরণ করবেন।
 
 এছাড়াও আপনারা আমার ডেভেলপ করা কিছু প্যাকেজ দেখে আইডিয়া নিতে পারেন।
 https://github.com/appzcoder/

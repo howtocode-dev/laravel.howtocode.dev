@@ -5,7 +5,7 @@
 
 এবার মুল বিষয় হচ্ছে ইভেন্ট ফায়ার করা এবং তার সাথে সাথে সেটা ব্রডকাস্টিং করা যাতে করে সকল ইউজার কিংবা ক্লায়েন্ট উক্ত ইভেন্ট কে বুজতে পারে। আর সেটা নোটিফিকেশনের মাধ্যমে ইউজারদের কাছে পাঠানো হয়।
 
-পিএইসপি কিংবা লারাভেলে **Pusher** লাইব্রেরী ব্যাবহার করে রিয়ালটাইম ইভেন্ট ব্রডকাস্ট করা যায় কিন্তু **Pusher** পেইড সার্ভিস এছাড়াও এর **HTTP Latency** অনেক বেশি অর্থাৎ রিকুয়েস্ট রেসপন্সে অনেক সময় যার কারণে আমরা **Redis** ব্যবহার করব যেটি **NodeJS, Socket.io** এর সাথে কাজ করে আর অনেক দ্রুত কাজ করে।
+পিএইচপি কিংবা লারাভেলে **Pusher** লাইব্রেরী ব্যাবহার করে রিয়ালটাইম ইভেন্ট ব্রডকাস্ট করা যায় কিন্তু **Pusher** পেইড সার্ভিস এছাড়াও এর **HTTP Latency** অনেক বেশি অর্থাৎ রিকুয়েস্ট রেসপন্সে অনেক সময় যার কারণে আমরা **Redis** ব্যবহার করব যেটি **NodeJS, Socket.io** এর সাথে কাজ করে আর অনেক দ্রুত কাজ করে।
 
 ##প্রক্রিয়াঃ
 প্রথমে আমাদেরকে ইভেন্ট আর লিসেনার তৈরি করে নিতে হবে। ইভেন্ট আর লিসেনার যথাক্রমে **app/Events** ও **app/Listeners** ডিরেক্টরিতে থাকে।
@@ -14,10 +14,10 @@
 এবার ধরুন আমাদের ক্ষেত্রে আমরা **UserRegisteredEvent** নামে ইভেন্ট রাখব তাহলে নিচের মত করে কোডটি **app/Providers/EventServiceProvider.php** ফাইলে লিখতে হবেঃ
 
 ```php
-protected $listen = [ 
-    'App\Events\UserRegisteredEvent' => [ 
-        'App\Listeners\UserRegisteredEventListener', 
-    ], 
+protected $listen = [
+    'App\Events\UserRegisteredEvent' => [
+        'App\Listeners\UserRegisteredEventListener',
+    ],
 ];
 ```
 
@@ -28,37 +28,37 @@ protected $listen = [
 ###ইভেন্টঃ
 
 ```php
-<?php 
- 
-namespace App\Events; 
- 
-use App\Events\Event; 
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast; 
- 
-class UserRegisteredEvent extends Event implements ShouldBroadcast 
-{ 
- 
-    public $user; 
- 
-    /** 
-     * Create a new event instance. 
-     * 
-     * @return void 
+<?php
+
+namespace App\Events;
+
+use App\Events\Event;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+
+class UserRegisteredEvent extends Event implements ShouldBroadcast
+{
+
+    public $user;
+
+    /**
+     * Create a new event instance.
+     *
+     * @return void
      */
-    public function __construct($user) 
-    { 
-        $this->user = $user; 
-    } 
- 
-    /** 
-     * Get the channels the event should be broadcast on. 
-     * 
-     * @return array 
+    public function __construct($user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * Get the channels the event should be broadcast on.
+     *
+     * @return array
      */
-    public function broadcastOn() 
-    { 
-        return ['test-channel']; 
-    } 
+    public function broadcastOn()
+    {
+        return ['test-channel'];
+    }
 }
 ```
 
@@ -66,9 +66,9 @@ class UserRegisteredEvent extends Event implements ShouldBroadcast
 এবার একবারে নিচের দিকে খেয়াল করলে দেখবেন **broadcastOn()** মেথড/ফাংকশনটি নিচের মত করে ডিফাইন করা হয়েছে।
 
 ```php
-public function broadcastOn() 
-{ 
-    return ['test-channel']; 
+public function broadcastOn()
+{
+    return ['test-channel'];
 }
 ```
 
@@ -77,35 +77,35 @@ public function broadcastOn()
 ###ইভেন্ট লিসেনারঃ
 
 ```php
-<?php 
- 
-namespace App\Listeners; 
- 
-use App\Events\UserRegisteredEvent; 
- 
-class UserRegisteredEventListener 
-{ 
-    /** 
-     * Create the event listener. 
-     * 
-     * @return void 
+<?php
+
+namespace App\Listeners;
+
+use App\Events\UserRegisteredEvent;
+
+class UserRegisteredEventListener
+{
+    /**
+     * Create the event listener.
+     *
+     * @return void
      */
-    public function __construct() 
-    { 
-        // 
-    } 
- 
-    /** 
-     * Handle the event. 
-     * 
-     * @param  UserRegisteredEvent  $event 
-     * @return void 
+    public function __construct()
+    {
+        //
+    }
+
+    /**
+     * Handle the event.
+     *
+     * @param  UserRegisteredEvent  $event
+     * @return void
      */
-    public function handle(UserRegisteredEvent $event) 
-    { 
-        var_dump("User: " . $event->user); 
-    } 
-} 
+    public function handle(UserRegisteredEvent $event)
+    {
+        var_dump("User: " . $event->user);
+    }
+}
 ```
 
 এখানে **handle()** ফাংকশনে আমাদের ইভেন্ট ক্লাসটি ইনজেক্ট করা হয়েছে আর **$event->user** প্রোপার্টি একসেস করা হচ্ছে। এই প্রোপার্টি ইচ্ছেমত ইমপ্লিমেন্ট করা যায় আপাতত ডাম্প করে দেখানো হয়েছে।
@@ -113,14 +113,14 @@ class UserRegisteredEventListener
 এবার রাউট এ আমরা নিচের মত করে ডিফাইন করব।
 
 ```php
-Route::get('broadcast', function () { 
-    event(new App\Events\UserRegisteredEvent('Sohel Amin')); 
- 
-    return 'Event has been fired!'; 
-}); 
- 
-Route::get('listen', function () { 
-    return view('events'); 
+Route::get('broadcast', function () {
+    event(new App\Events\UserRegisteredEvent('Sohel Amin'));
+
+    return 'Event has been fired!';
+});
+
+Route::get('listen', function () {
+    return view('events');
 });
 ```
 
@@ -129,35 +129,35 @@ Route::get('listen', function () {
 আর **listen** রাউটে একটা ভিউ ফাইল লোড করা হয়েছে যেটিতে নিচের মত কোড আছে।
 
 ```php
-<!DOCTYPE html> 
-<html> 
-    <head> 
-        <title>Laravel Event Broadcasting</title> 
-        <link href="//fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css"> 
-    </head> 
-    <body> 
- 
-        <h2>User's List</h2> 
-        <ul id="user-list"> 
-        </ul> 
- 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script> 
-        <script> 
-            var socket = io('http://localhost:3000'); 
- 
-            socket.on("test-channel:App\\Events\\UserRegisteredEvent", function(message){ 
-                console.log(message); 
- 
-                // Appending user to user's list 
-                var ul = document.getElementById("user-list"); 
-                var li = document.createElement("li"); 
-                li.appendChild(document.createTextNode(message.user)); 
-                ul.appendChild(li); 
- 
-            }); 
-        </script> 
-    </body> 
-</html> 
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Laravel Event Broadcasting</title>
+        <link href="//fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+
+        <h2>User's List</h2>
+        <ul id="user-list">
+        </ul>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+        <script>
+            var socket = io('http://localhost:3000');
+
+            socket.on("test-channel:App\\Events\\UserRegisteredEvent", function(message){
+                console.log(message);
+
+                // Appending user to user's list
+                var ul = document.getElementById("user-list");
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(message.user));
+                ul.appendChild(li);
+
+            });
+        </script>
+    </body>
+</html>
 ```
 
 এখানে আমরা **socket.io** ব্যাবহার করেছি কাজেই ভিউ ফাইলে **socket.io** এর জেএস ফাইল ইনক্লুড করেছি এবং চ্যানেল আর ইভেন্ট এর নাম নেমস্পেস সহ ডিফাইন করেছি।
@@ -168,7 +168,7 @@ Route::get('listen', function () {
 'default' => env('BROADCAST_DRIVER', 'redis'),
 ```
 
-এর সাথে সাথে রেডিস এর পিএইসপি লাইব্রেরী কম্পোজারে অ্যাড করে নিতে হবে।
+এর সাথে সাথে রেডিস এর পিএইচপি লাইব্রেরী কম্পোজারে অ্যাড করে নিতে হবে।
 আর এই জন্য নিচের কমান্ড লিখতে হবে।
 
 ```
@@ -186,27 +186,27 @@ composer require predis/predis
 ```JavaScript
 var app = require('http').createServer(handler);
 var io = require('socket.io')(app);
- 
+
 var Redis = require('ioredis');
 var redis = new Redis();
- 
+
 app.listen(3000, function() {
     console.log('Server is running!');
 });
- 
+
 function handler(req, res) {
     res.writeHead(200);
     res.end('');
 }
- 
+
 io.on('connection', function(socket) {
     //
 });
- 
+
 redis.psubscribe('*', function(err, count) {
     //
 });
- 
+
 redis.on('pmessage', function(subscribed, channel, message) {
     message = JSON.parse(message);
     io.emit(channel + ':' + message.event, message.data);
