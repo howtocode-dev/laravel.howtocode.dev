@@ -102,9 +102,10 @@ location / {
 ৪. database
 ৫. public
 ৬. resources
-৭. storage
-৮. tests
-৯. vendor
+৭. routes
+৮. storage
+৯. tests
+১০. vendor
 
 #### app
 এই ডিরেক্টরিতে সব এপ্লিকেশন লজিক থাকে, যেগুলো আমরাই বানাবো। যেমনঃ মডেল, কন্ট্রোলার, রাউট
