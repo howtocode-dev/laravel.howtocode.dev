@@ -74,7 +74,10 @@ The current UNIX timestamp is {{ time() }}.
 এইক্ষেত্রে ভেরিয়েবল ডিফাইন করার জন্য ব্লেডের কমেন্টস ব্যাবহার করতে হবে নিচের মত করে।
 
 ```php
-{{-- */ $name='Sohel Amin' /* --}}
+@php
+    $name = 'Sohel Amin';
+@endphp
+
 Hello, {{ $name }}
 ```
 
@@ -150,8 +153,8 @@ Hello, {{ $name }}
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=5.5.9",
-        "laravel/framework": "5.2.*"
+        "php": ">=5.6.4",
+        "laravel/framework": "5.3.*"
     },
 		.
 		.
@@ -169,9 +172,9 @@ Hello, {{ $name }}
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=5.5.9",
-        "laravel/framework": "5.2.*",
-        "laravelcollective/html": "5.2.*"
+        "php": ">=5.6.4",
+        "laravel/framework": "5.3.*",
+        "laravelcollective/html": "5.3.*"
     },
 		.
 		.
@@ -401,7 +404,7 @@ HTML আউটপুট হবেঃ
 ```@section('title', 'Forms')``` এটি section, প্রথম প্যারামিটারটি section এর নাম ও দ্বিতীয় প্যারামিটারটি section এর value. Valueটি যদি এমন একটি স্ট্রিং হয় তো এভাবেই লেখা যায়।
 কিন্তু দেখেন content নামের sectionটি শুধু প্রথম প্যারামিটারটি ব্যবহার করে নামটি দিয়েছে পরে এর বিশাল value দিয়েছে এবং অবশেষে @endsection লিখে sectionটি শেষ করেছে।
 
-ফাইল তো হল, এদের জন্য রাউট তৈরি করি। app/Http/routes.php ফাইলটি খুলে নিচের মত রাউট বানাই। আগের অনুশীলন গুলো করে থাকলে এটা আপনার জন্য খুবি সহজ।
+ফাইল তো হল, এদের জন্য রাউট তৈরি করি। routes/web.php ফাইলটি খুলে নিচের মত রাউট বানাই। আগের অনুশীলন গুলো করে থাকলে এটা আপনার জন্য খুবি সহজ।
 
 ```php
 Route::get('/form', function () {

@@ -16,11 +16,12 @@ curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/loca
 
 আমরা যেহেতু লারাভেলের নতুন ভার্সন ব্যবহার করব সেহেতু পিএইচপির নতুন ভার্সনের সাথে সাথে কিছু এক্সটেনশন থাকতে হবে নিচে সেগুলা নিচে উল্লেখ করা হলঃ
 
-* PHP >= 5.5.9
+* PHP >= 5.6.4
 * OpenSSL PHP Extension
 * PDO PHP Extension
 * Mbstring PHP Extension
 * Tokenizer PHP Extension
+* XML PHP Extension
 
 কম্পোজার সহ সব কিছু ইন্সটল আর কনফিগার করা হয়ে গেলে নিচের মত করে লারাভেল ইন্সটল করুন।
 
@@ -34,7 +35,7 @@ composer create-project laravel/laravel your-project-name --prefer-dist
 ধরুন আমাদের ক্ষেত্রে howtocode নাম দিলাম তাহলে আমাদেরকে প্রথম থেকে নিচের মত করে কমান্ড লিখতে হবেঃ
 
 ```bash
-cd /var/www/html
+cd /var/www
 composer create-project laravel/laravel howtocode –prefer-dist
 cd howtocode
 ```
@@ -89,7 +90,7 @@ location / {
 }
 ```
 
-## লারাভেল ৫.২ ফাইল বিন্যাস
+## লারাভেল ৫.৩ ফাইল বিন্যাস
 লারাভেল ইন্সটল শেষ, আমাদের প্রোজেক্ট ডিরেক্টরি তে তো অনেক কিছু! বেশীর ভাগই লারাভেল এর নিজের ব্যবহারের জন্য কিন্তু বাকিটা আমাদের জন্য, যেখানে আমারা নতুন ফাইল তৈরি করবো, ডিফল্ট ফাইল এডিট করবো - আমাদের এপ্লিকেশন বানাতে।
 আসুন বেসিক ধারনা নিয়ে নেই।
 
@@ -123,6 +124,9 @@ location / {
 #### resources
 আমাদের ফ্রন্ট এন্ড ফাইল যাকে ভিউ বলি সেগুলা এখানেই রাখব। তা ছাড়া LESS, SASS, CoffeeScript ও ভাষার ফাইলগুলাও এখানে থাকে।
 
+#### routes
+এখানে সব রাউটের ডিফাইনেশন গুলা থাকে। যেমনঃ web.php, api.php, ও console.php
+
 #### storage
 লারাভেল ব্যবহার করে, সব কম্পপ্লাইড টেম্পলেট, সেশন, cache ফাইল রাখার জন্য।
 
@@ -135,8 +139,6 @@ location / {
 আসলে লারাভেল নিয়ে কাজ করতে থাকলে এগুলা এমনিতেই পরিচিত হয়ে যাবে।
 
 তবুও আরও জানতে চাইলে [Laravel Application structure](https://laravel.com/docs/master/structure) দেখুন।
-
-
 
 
 পরবর্তী চ্যাপ্টারে **বেসিক রাউটিং** নিয়ে আলোচনা করা হবে।

@@ -2,7 +2,7 @@
 ***
 সফটওয়্যার আর্কিটেকচারে রাউট হচ্ছে মৌলিক উপাদান(Basic Component). রাউট URL(URL = Uniform Resource Locator)
 
-থেকে অনুরোধ গ্রহণ করে এবং এপ্লিকেশনকে রিসোর্সের জন্য নির্দেশনা প্রদান করে। লারাভেলের রাউট সমূহ একই সাথে সুবিন্যস্ত করে রাখার জন্য **app/Http/routes.php** তে লিখা হয়।
+থেকে অনুরোধ গ্রহণ করে এবং এপ্লিকেশনকে রিসোর্সের জন্য নির্দেশনা প্রদান করে। লারাভেলের রাউট সমূহ একই সাথে সুবিন্যস্ত করে রাখার জন্য **routes/web.php** তে লিখা হয়।
 
 এর সবচেয়ে বড় সুবিধা হচ্ছে আপনি এক যায়গা থেকেই সমস্ত রাউটকে নিয়ন্ত্রণ করতে পারবেন অর্থাৎ পরবর্তিতে রাউট সম্পর্কিত যেকোনো ধরনের পরিবর্তন এখান থেকেই করতে পারবেন।
 
@@ -54,76 +54,66 @@ class UserController extends BaseController {
 }
 ```
 
-**নোট :** এই দুই পদ্ধতি যথাযথভাবে কাজ করবে যদি আপনার Controller এবং  Method সমূহ RESTful হয়।  RESTful Controller সম্পর্কে এখান থেকে [বিস্তারিত](http://laravel.com/docs/5.0/controllers#restful-resource-controllers) পড়ুন
+**নোট :** এই দুই পদ্ধতি যথাযথভাবে কাজ করবে যদি আপনার Controller এবং  Method সমূহ RESTful হয়।  RESTful Controller সম্পর্কে এখান থেকে [বিস্তারিত](https://laravel.com/docs/master/controllers#resource-controllers) পড়ুন
 
 <h2 class='exercise-heading'>অনুশীলনঃ</h2>
 
 কোন কিছু শেখার সময় হাতে কলমে করতে পারলে শেখাটা ভাল হয় তাই আমরা চেষ্টা করবো কিছু অনুশীলন করতে।
 
-দ্বিতীয় অধ্যায়ে আমরা শিখেছিলাম লারাভেল ইন্সটল করতে, আসুন blog.app নামে একটি লারাভেল আএপ্স বানই ও বেসিক রাউটিং অনুশীলন করি, পরবর্তীতে আমরা আরও নতুন নতুন জিনিস শিখবো ও এটাকে উন্নত করব।
+দ্বিতীয় অধ্যায়ে আমরা শিখেছিলাম লারাভেল ইন্সটল করতে, আসুন blog.app নামে একটি লারাভেল অ্যাাপ বানাই ও বেসিক রাউটিং অনুশীলন করি, পরবর্তীতে আমরা আরও নতুন নতুন জিনিস শিখবো ও এটাকে উন্নত করব।
 
 আমাদের নিজস্ব এনভায়রনমেন্ট(htdocs, www etc.) এ যাই ও টার্মিনালে নিচের কমান্ড দেই
 
 ```bash
 composer create-project laravel/laravel blog.app
 ```
-এই কমান্ড টি আমাদের ওয়ার্কিং ফোল্ডারে blog.app নামে একটি directory বানিয়ে তার ভিতরে লারাভেল এর যাবতীয় ফাইল ইন্টারনেট থেকে নামিয়ে নিবে। এবার যদি আপনি ফোল্ডারটি আপনার এডিটরে খুলনে তাহলে নিচের ছবিটার মত দেখবেন( লারাভেল 5.2.24 )  ।
-![Laravel 5.2 File structure](images/laravel-5-2-file-structure.jpg)
+এই কমান্ড টি আমাদের ওয়ার্কিং ফোল্ডারে blog.app নামে একটি directory বানিয়ে তার ভিতরে লারাভেল এর যাবতীয় ফাইল ইন্টারনেট থেকে নামিয়ে নিবে।
 
 আশাকরি ব্রাউজারে আপনি সাইটটি দেখতে পারছেন ।
 
 আসুন নতুন রাউট বানাই ঃ
 
-আমরা যদি  **app/Http/routes.php** ফাইলটি খুলি তাহলে লারাভেল 5.2.24 অনুযায়ী এটা দেখবো
+আমরা যদি  **routes/web.php** ফাইলটি খুলি তাহলে এটা দেখবো
 
 ```php
-Route::group(['middleware' => ['web']], function () {
-
-    Route::get('/', function () {
-        return view('welcome');
-    });
-
+Route::get('/', function () {
+    return view('welcome');
 });
 ```
 আসুন নতুন কিছু রুট বানাই এটাকে পরিবর্তন করে। এই মুহূর্তে আমরা সৌন্দর্যের কথা না ভেবে শুধু কার্যকরীটা দেখি।
 
 ```php
-Route::group(['middleware' => ['web']], function () {
+Route::get('/', function () {
+    return 'This is our home page.';
+});
 
+Route::get('/about', function () {
+    return 'This is our about page.';
+});
+
+Route::get('/contact', function () {
+    return 'This is our contact page.';
+});
+
+//Lets make some group route
+Route::group(['prefix' => 'admin'], function () {
     Route::get('/', function () {
-        return 'This is our home page.';
+        return 'This is our Admin Dashboard';
     });
+    // this link: blog.app/admin/
 
-    Route::get('/about', function () {
-        return 'This is our about page.';
+    Route::get('/user-list', function () {
+        return 'This is our Admin Dashboard user list page';
     });
+    // this link: blog.app/admin/user-list
 
-    Route::get('/contact', function () {
-        return 'This is our contact page.';
+    Route::get('/create-blog', function () {
+        return 'This is our Admin Dashboard create-blog page';
     });
-
-    //Lets make some group route
-    Route::group(['prefix' => 'admin'], function () {
-        Route::get('/', function () {
-            return 'This is our Admin Dashboard';
-        });
-        // this link: blog.app/admin/
-
-        Route::get('/user-list', function () {
-            return 'This is our Admin Dashboard user list page';
-        });
-        // this link: blog.app/admin/user-list
-
-        Route::get('/create-blog', function () {
-            return 'This is our Admin Dashboard create-blog page';
-        });
-        //// this link: blog.app/admin/create-blog
-    });
-
+    //// this link: blog.app/admin/create-blog
 });
 ```
 
 এখানে নতুন হলো রুট গ্রুপ করা। 'prefix' ব্যবহার করে গ্রুপ তৈরি করেছি। আশা করি বুজতে পারছেন। এখন একটু কঠিন মনে হলেও পরবর্তী অধ্যায় করতে করতে সব আয়ত্তে এসে যাবে ।
-
 
 পরবর্তী চ্যাপ্টারে **ভিউ**  নিয়ে আলোচনা করা হবে।
