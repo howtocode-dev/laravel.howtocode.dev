@@ -35,7 +35,7 @@ DB_PASSWORD=secret
 ```
 আপনি নিশ্চয় বুজতে পারছেন এগুলা constant variable, কিন্তু কোথায় এগুলার ব্যবহার হয়??
 
-মনে আছে আমরা **[ইন্সটলেশন অধ্যায়ে](http://laravel.howtocode.com.bd/installation.html)** লারাভেল ৫.২ ফাইল বিন্যাস দেখেছিলাম?
+মনে আছে আমরা **[ইন্সটলেশন অধ্যায়ে](http://laravel.howtocode.com.bd/installation.html)** লারাভেল ৫.৩ ফাইল বিন্যাস দেখেছিলাম?
 
 হুম.. তাহলে আসুন ```/config/database.php``` ফাইলটি খুলি।
 
