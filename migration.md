@@ -35,7 +35,7 @@ DB_PASSWORD=secret
 ```
 আপনি নিশ্চয় বুজতে পারছেন এগুলা constant variable, কিন্তু কোথায় এগুলার ব্যবহার হয়??
 
-মনে আছে আমরা **[ইন্সটলেশন অধ্যায়ে](http://laravel.howtocode.com.bd/installation.html)** লারাভেল ৫.২ ফাইল বিন্যাস দেখেছিলাম?
+মনে আছে আমরা **[ইন্সটলেশন অধ্যায়ে](http://laravel.howtocode.com.bd/installation.html)** লারাভেল ৫.৩ ফাইল বিন্যাস দেখেছিলাম?
 
 হুম.. তাহলে আসুন ```/config/database.php``` ফাইলটি খুলি।
 
@@ -161,7 +161,7 @@ Schema::create('posts', function (Blueprint $table) {
 ```
 বুজতেই পারছেন আমি title নামের string টাইপের ২৫৫ অক্ষরের মধ্যে সীমাবদ্ধ একটি column যোগ করেছি। এছাড়া content, slug ও status নামের আরও তিনটি column যোগ করেছি। আশা করি এগুলার টাইপটি বুজতে পেরেছেন। আমি এই কলামগুলা তৈরি করার জন্য যে মেথড গুলো ব্যবহার করেছি সেগুলাকে বলে কলাম মেথড(Column methods)।
 
-**আপনাদের সুবিধার্থে নিচে কলাম মেথড গুলোর লিস্টটি লারাভেল ৫.২ ডকুমেন্টেশন থেকে কপি করে আনলাম।**
+**আপনাদের সুবিধার্থে নিচে কলাম মেথড গুলোর লিস্টটি লারাভেল ৫.৪ ডকুমেন্টেশন থেকে কপি করে আনলাম।**
 <table>
 <thead>
 <tr>
@@ -171,140 +171,187 @@ Schema::create('posts', function (Blueprint $table) {
 </thead>
 <tbody>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">bigIncrements<span class="token punctuation">(</span></span><span class="token string">'id'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
-<td>Incrementing ID (primary key) using a "UNSIGNED BIG INTEGER" equivalent.</td>
+<td><code>$table-&gt;bigIncrements('id');</code></td>
+<td>Incrementing ID (primary key) using a &quot;UNSIGNED BIG INTEGER&quot; equivalent.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">bigInteger<span class="token punctuation">(</span></span><span class="token string">'votes'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
+<td><code>$table-&gt;bigInteger('votes');</code></td>
 <td>BIGINT equivalent for the database.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">binary<span class="token punctuation">(</span></span><span class="token string">'data'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
+<td><code>$table-&gt;binary('data');</code></td>
 <td>BLOB equivalent for the database.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">boolean<span class="token punctuation">(</span></span><span class="token string">'confirmed'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
+<td><code>$table-&gt;boolean('confirmed');</code></td>
 <td>BOOLEAN equivalent for the database.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">char<span class="token punctuation">(</span></span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
+<td><code>$table-&gt;char('name', 4);</code></td>
 <td>CHAR equivalent with a length.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">date<span class="token punctuation">(</span></span><span class="token string">'created_at'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
+<td><code>$table-&gt;date('created_at');</code></td>
 <td>DATE equivalent for the database.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">dateTime<span class="token punctuation">(</span></span><span class="token string">'created_at'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
+<td><code>$table-&gt;dateTime('created_at');</code></td>
 <td>DATETIME equivalent for the database.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">decimal<span class="token punctuation">(</span></span><span class="token string">'amount'</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
+<td><code>$table-&gt;dateTimeTz('created_at');</code></td>
+<td>DATETIME (with timezone) equivalent for the database.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;decimal('amount', 5, 2);</code></td>
 <td>DECIMAL equivalent with a precision and scale.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">double<span class="token punctuation">(</span></span><span class="token string">'column'</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
+<td><code>$table-&gt;double('column', 15, 8);</code></td>
 <td>DOUBLE equivalent with precision, 15 digits in total and 8 after the decimal point.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">enum<span class="token punctuation">(</span></span><span class="token string">'choices'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'foo'</span><span class="token punctuation">,</span> <span class="token string">'bar'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
+<td><code>$table-&gt;enum('choices', ['foo', 'bar']);</code></td>
 <td>ENUM equivalent for the database.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">float<span class="token punctuation">(</span></span><span class="token string">'amount'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
-<td>FLOAT equivalent for the database.</td>
+<td><code>$table-&gt;float('amount', 8, 2);</code></td>
+<td>FLOAT equivalent for the database, 8 digits in total and 2 after the decimal point.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">increments<span class="token punctuation">(</span></span><span class="token string">'id'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
-<td>Incrementing ID (primary key) using a "UNSIGNED INTEGER" equivalent.</td>
+<td><code>$table-&gt;increments('id');</code></td>
+<td>Incrementing ID (primary key) using a &quot;UNSIGNED INTEGER&quot; equivalent.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">integer<span class="token punctuation">(</span></span><span class="token string">'votes'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
+<td><code>$table-&gt;integer('votes');</code></td>
 <td>INTEGER equivalent for the database.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">ipAddress<span class="token punctuation">(</span></span><span class="token string">'visitor'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
+<td><code>$table-&gt;ipAddress('visitor');</code></td>
 <td>IP address equivalent for the database.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">json<span class="token punctuation">(</span></span><span class="token string">'options'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
+<td><code>$table-&gt;json('options');</code></td>
 <td>JSON equivalent for the database.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">jsonb<span class="token punctuation">(</span></span><span class="token string">'options'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
+<td><code>$table-&gt;jsonb('options');</code></td>
 <td>JSONB equivalent for the database.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">longText<span class="token punctuation">(</span></span><span class="token string">'description'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
+<td><code>$table-&gt;longText('description');</code></td>
 <td>LONGTEXT equivalent for the database.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">macAddress<span class="token punctuation">(</span></span><span class="token string">'device'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
+<td><code>$table-&gt;macAddress('device');</code></td>
 <td>MAC address equivalent for the database.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">mediumInteger<span class="token punctuation">(</span></span><span class="token string">'numbers'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
+<td><code>$table-&gt;mediumIncrements('id');</code></td>
+<td>Incrementing ID (primary key) using a &quot;UNSIGNED MEDIUM INTEGER&quot; equivalent.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;mediumInteger('numbers');</code></td>
 <td>MEDIUMINT equivalent for the database.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">mediumText<span class="token punctuation">(</span></span><span class="token string">'description'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
+<td><code>$table-&gt;mediumText('description');</code></td>
 <td>MEDIUMTEXT equivalent for the database.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">morphs<span class="token punctuation">(</span></span><span class="token string">'taggable'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
-<td>Adds INTEGER <code class=" language-php">taggable_id</code> and STRING <code class=" language-php">taggable_type</code>.</td>
+<td><code>$table-&gt;morphs('taggable');</code></td>
+<td>Adds unsigned INTEGER <code>taggable_id</code> and STRING <code>taggable_type</code>.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">nullableTimestamps<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
-<td>Same as <code class=" language-php"><span class="token function">timestamps<span class="token punctuation">(</span></span><span class="token punctuation">)</span></code>, except allows NULLs.</td>
+<td><code>$table-&gt;nullableMorphs('taggable');</code></td>
+<td>Nullable versions of the <code>morphs()</code> columns.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">rememberToken<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
-<td>Adds <code class=" language-php">remember_token</code> as VARCHAR(100) NULL.</td>
+<td><code>$table-&gt;nullableTimestamps();</code></td>
+<td>Nullable versions of the <code>timestamps()</code> columns.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">smallInteger<span class="token punctuation">(</span></span><span class="token string">'votes'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
+<td><code>$table-&gt;rememberToken();</code></td>
+<td>Adds <code>remember_token</code> as VARCHAR(100) NULL.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;smallIncrements('id');</code></td>
+<td>Incrementing ID (primary key) using a &quot;UNSIGNED SMALL INTEGER&quot; equivalent.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;smallInteger('votes');</code></td>
 <td>SMALLINT equivalent for the database.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">softDeletes<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
-<td>Adds <code class=" language-php">deleted_at</code> column for soft deletes.</td>
+<td><code>$table-&gt;softDeletes();</code></td>
+<td>Adds nullable <code>deleted_at</code> column for soft deletes.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">string<span class="token punctuation">(</span></span><span class="token string">'email'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
+<td><code>$table-&gt;string('email');</code></td>
 <td>VARCHAR equivalent column.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">string<span class="token punctuation">(</span></span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
+<td><code>$table-&gt;string('name', 100);</code></td>
 <td>VARCHAR equivalent with a length.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">text<span class="token punctuation">(</span></span><span class="token string">'description'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
+<td><code>$table-&gt;text('description');</code></td>
 <td>TEXT equivalent for the database.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">time<span class="token punctuation">(</span></span><span class="token string">'sunrise'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
+<td><code>$table-&gt;time('sunrise');</code></td>
 <td>TIME equivalent for the database.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">tinyInteger<span class="token punctuation">(</span></span><span class="token string">'numbers'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
+<td><code>$table-&gt;timeTz('sunrise');</code></td>
+<td>TIME (with timezone) equivalent for the database.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;tinyInteger('numbers');</code></td>
 <td>TINYINT equivalent for the database.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">timestamp<span class="token punctuation">(</span></span><span class="token string">'added_on'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
+<td><code>$table-&gt;timestamp('added_on');</code></td>
 <td>TIMESTAMP equivalent for the database.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">timestamps<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
-<td>Adds <code class=" language-php">created_at</code> and <code class=" language-php">updated_at</code> columns.</td>
+<td><code>$table-&gt;timestampTz('added_on');</code></td>
+<td>TIMESTAMP (with timezone) equivalent for the database.</td>
 </tr>
 <tr>
-<td><code class=" language-php"><span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">uuid<span class="token punctuation">(</span></span><span class="token string">'id'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></td>
+<td><code>$table-&gt;timestamps();</code></td>
+<td>Adds nullable <code>created_at</code> and <code>updated_at</code> columns.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;timestampsTz();</code></td>
+<td>Adds nullable <code>created_at</code> and <code>updated_at</code> (with timezone) columns.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;unsignedBigInteger('votes');</code></td>
+<td>Unsigned BIGINT equivalent for the database.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;unsignedInteger('votes');</code></td>
+<td>Unsigned INT equivalent for the database.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;unsignedMediumInteger('votes');</code></td>
+<td>Unsigned MEDIUMINT equivalent for the database.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;unsignedSmallInteger('votes');</code></td>
+<td>Unsigned SMALLINT equivalent for the database.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;unsignedTinyInteger('votes');</code></td>
+<td>Unsigned TINYINT equivalent for the database.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;uuid('id');</code></td>
 <td>UUID equivalent for the database.</td>
 </tr>
 </tbody>
 </table>
-
 **আসুন দেরি না করে আমাদের বানানো এবং আগে থাকা(যদি থাকে) মাইগ্রেশনগুলোকে দিয়ে ডাটাবেজে টেবিলগুলি বানিয়ে ফেলি।**
 Terminal এ নিচের কমান্ডটি রান করাইঃ
 ```bash
