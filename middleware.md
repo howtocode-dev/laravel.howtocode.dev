@@ -33,4 +33,91 @@ Terminal ওপেন করুন এবং লিখুনঃ
 protected $middleware = [
 ...
 \App\Http\Middleware\<middleware Name>:: class
-]`
+]
+```
+
+### ৩. রাউটারে মিডলওয়্যার রেজিস্টারঃ 
+এখন আপনি যদি মিডলওয়্যার ইউজারকে আপনার অ্যাপের নির্দিষ্ট কোন লিঙ্কে যাওয়ার সময় চেক করতে চান তাহলে মিডলওয়্যারটিকে রাউটএর সাথে বেধে দিতে পারেন। 
+যেমনঃ 
+
+```Route::get (‘welcome’, ‘WelcomeController@profile_info’);```
+
+এখানে লক্ষ করুন ইউজার ```<appURL>/welcome``` লিখলে রাউট তাকে ```WelcomeController``` এর  ```profile_info``` function এ  নিয়ে যাবে। 
+
+এখন আপনার ভাবনায় আসলো যে ...না এভাবে কোন ইউজার এসে প্রফাইল ইনফো নিয়ে জেতে পারবেন না। তাকে আগে দেখাতে হবে যে সে আসলেই আমার ইউজার । আপনার এই সমস্যার সমাধান নিয়েই হাজির মিডলওয়্যার!! 
+
+আপনি ইচ্ছা করলেই রাউটএর সাথে বেধে দিতে পারেন আপনার মিডলওয়্যারকে ঠিক আমি জেভাবে লিখলাম সেভাবে।
+ধরে নেই আপনার একটি auth মিডলওয়্যার আসে যেটা আপনার অ্যাপ ইউজার কিনা চেক করে। 
+তাহলে লিখে ফেলুন এভাবেঃ 
+
+```Route::get (‘welcome’, ‘WelcomeController@profile_info’)->middleware(‘Auth’);```
+
+আবার ইচ্ছা করলে একাধিক মিডলওয়্যার ও ব্যবহার করতে পারেন এভাবেঃ  
+
+```Route::get (‘welcome’, ‘WelcomeController@profile_info’)->middleware(‘Auth’, ‘admin’);```
+
+### ৪. মিডলওয়্যার গ্রুপঃ 
+
+লারাভেল আপনার কাজকে সহজ করার জন্য অতিমানবীয় আইডিয়া এনেছে এখানে। আপনি ভাবছেন আপনার অ্যাপে ওয়েব ও এপিআই রাউট দুইভাবে ইউজারকে ডাটা দিবেন। কিন্তু এত নিখুত ভাবে কত মিডলওয়্যার লিখা যায় ?? 
+এই সমস্যা সমাধান এর জন্য লারাভেল এনেছে  গ্রুপ মিডলওয়্যার । 
+`app/Http/kernel.php` এই ফাইলে দেখবেন এভাবে লেখা আছে ।
+
+```
+protected $middlewareGroups = [
+    'web' => [
+        \App\Http\Middleware\EncryptCookies::class,
+        \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+        \Illuminate\Session\Middleware\StartSession::class,
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \App\Http\Middleware\VerifyCsrfToken::class,
+        \Illuminate\Routing\Middleware\SubstituteBindings::class,
+    ],
+    'api' => [
+        'throttle:60,1',
+        'auth:api',
+    ],
+];
+```
+এই দুই অ্যারেতে আপনার ইচ্ছানুযায়ী মিডলওয়্যার অ্যাড করে দিতে পারেন । 
+
+### 5. মিডলওয়্যার প্যারামিটারঃ 
+
+আমরা ইচ্ছা করলে মিডলওয়্যারে প্যারামিটার পাস করতে পারি।
+ধরি আমাদের মিডলওয়্যারটি ইউজারএর রোল চেক করবে।  তো মিডলওয়্যার ফাঙ্কশনে আমরা  Closure প্যারামিটার এর মধ্যে দিয়ে $request পাস করতে পারি। 
+যেমনঃ
+```
+public function handle($request, Closure $next, $role)
+{
+    if (! $request->user()->hasRole($role)) {
+        // Redirect...
+    }
+    return $next($request);
+} 
+```
+এখন আমরা রাউটে মিডলওয়্যার অ্যাড করে দিব । 
+
+```Route::post('post/{id}', ['middleware' => 'role:editor', function ($id) {
+    //
+}]);
+```
+
+এখন আপনি যদি চান মিডলওয়্যার আগে রান করবে এবং  তারপর ইউজারকে রেসপন্স পাঠাবে । তাহলে আমরা এভাবে লিখতে পারিঃ
+
+```
+public function handle($request, Closure $next)
+{
+    $response = $next($request);
+
+    /**
+    * Perform actions here
+    */
+
+    return $response;
+}
+```
+
+## উপসংহারঃ 
+
+এখানে মোটামোটি মিডলওয়্যার নিয়ে ডিটেইলস আলোচনা করা হয়েছে । আপনি আর জানতে চাইলে ভিসিট করুন লারাভেল অফিসিয়াল পেইজে ।
+
+
