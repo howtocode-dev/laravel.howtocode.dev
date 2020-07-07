@@ -1,5 +1,7 @@
+# ভূমিকা
+
 **লেখক ও কন্ট্রিবিউটরদের তালিকা**  
-[বিস্তারিত এখানে](https://github.com/howtocode-dev/laravel.howtocode.dev/graphs/contributors?type=a)   
+[বিস্তারিত এখানে](https://github.com/howtocode-dev/laravel.howtocode.dev/graphs/contributors?type=a)
 
 লারাভেল একটি ওপেন সোর্স পিএইচপি ফ্রেমওয়ার্ক। ২০১১ সালে [টেইলর অটওয়েল](http://taylorotwell.com/) প্রথম লারাভেল ডেভেলপ করেন। এটি এখন শুধু টেইলর-এর প্রডাক্ট নয়, এটি এখন এক বিশাল প্রোগ্রামার কমিউনিটির প্রডাক্ট। সাধারণ ব্লগ, কনটেন্ট ম্যানেজমেন্ট সিস্টেম, ইকমার্স সাইট, বড় ধরনের বিজনেস এপ্লিকেশন, সামাজিক ওয়েবসাইট কিংবা মোবাইল এপ্লিকেশনের জন্য JSON নির্ভর এপ্লিকেশন সহ সব কিছুই লারাভেল ব্যবহার করে সাচ্ছন্দের সাথে ডেভেলপ করা সম্ভব।
 
@@ -7,10 +9,12 @@
 
 **ওপেন সোর্স**
 
-এই বইটি মূলত স্বেচ্ছাশ্রমে লেখা এবং বইটি সম্পূর্ন ওপেন সোর্স । এখানে তাই আপনিও অবদান রাখতে পারেন লেখক হিসেবে । আপনার কন্ট্রিবিউশান গৃহীত হলে অবদানকারীদের তালিকায় আপনার নাম স্বয়ংক্রিয়ভাবে যুক্ত হয়ে যাবে।  
+এই বইটি মূলত স্বেচ্ছাশ্রমে লেখা এবং বইটি সম্পূর্ন ওপেন সোর্স । এখানে তাই আপনিও অবদান রাখতে পারেন লেখক হিসেবে । আপনার কন্ট্রিবিউশান গৃহীত হলে অবদানকারীদের তালিকায় আপনার নাম স্বয়ংক্রিয়ভাবে যুক্ত হয়ে যাবে।
 
-এটি মূলত একটি [গিটহাব রিপোজিটোরি](https://github.com/howtocode-dev/laravel.howtocode.dev)  যেখানে এই বইয়ের আর্টিকেল গুলো মার্কডাউন ফরম্যাটে লেখা হচ্ছে । রিপোজিটরিটি ফর্ক করে পুল রিকুয়েস্ট পাঠানোর মাধ্যমে আপনারাও অবদান রাখতে পারেন । বিস্তারিত দেখতে পারেন এই ভিডিওতে  [Video](http://blog.howtocode.dev/?p=32)
+এটি মূলত একটি [গিটহাব রিপোজিটোরি](https://github.com/howtocode-dev/laravel.howtocode.dev) যেখানে এই বইয়ের আর্টিকেল গুলো মার্কডাউন ফরম্যাটে লেখা হচ্ছে । রিপোজিটরিটি ফর্ক করে পুল রিকুয়েস্ট পাঠানোর মাধ্যমে আপনারাও অবদান রাখতে পারেন । বিস্তারিত দেখতে পারেন এই ভিডিওতে [Video](http://blog.howtocode.dev/?p=32)
 
-> **বর্তমানে বইটির কন্টেন্ট বিভিন্ন কন্ট্রিবিউটর এবং নানা রকম সোর্স থেকে সংগৃহীত এবং সংকলিত।**  
+> **বর্তমানে বইটির কন্টেন্ট বিভিন্ন কন্ট্রিবিউটর এবং নানা রকম সোর্স থেকে সংগৃহীত এবং সংকলিত।**
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.   
+  
+This work is licensed under a [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](http://creativecommons.org/licenses/by-nc-nd/4.0/).
+
